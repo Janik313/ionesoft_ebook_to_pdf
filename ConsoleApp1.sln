@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31313.79
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "ConsoleApp1.csproj", "{67BCBB79-04FF-4E4E-811F-2307504E8648}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{D710D303-6430-4275-8EAC-01D76EA8550B}"
+	ProjectSection(SolutionItems) = preProject
+		application_starter.cs = application_starter.cs
+		converter.cs = converter.cs
+		create_temp.cs = create_temp.cs
+		delete_temp.cs = delete_temp.cs
+		html_fixer.cs = html_fixer.cs
+		scraper.cs = scraper.cs
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{67BCBB79-04FF-4E4E-811F-2307504E8648}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67BCBB79-04FF-4E4E-811F-2307504E8648}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67BCBB79-04FF-4E4E-811F-2307504E8648}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67BCBB79-04FF-4E4E-811F-2307504E8648}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {527DE7DC-9779-496E-88AC-6B130773A61F}
+	EndGlobalSection
+EndGlobal
