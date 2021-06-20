@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Net;
+using System.Diagnostics;
 
 
 namespace ProgramStart
@@ -74,7 +75,9 @@ namespace Converter
     {
         static void Main(string[] args)
         {
-            
+            string cmd = @"RUNDLL32.EXE MSHTML.DLL,PrintHTML ""C:/Temp/fixed.html""";
+            File.WriteAllText(@"C:/Temp/Printer.bat", cmd);
+            Process.Start(@"C:/Temp/Printer.bat");
         }
     }
 }
