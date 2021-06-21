@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Net;
 using System.Diagnostics;
+using System.Runtime.InteropServices;
+
 
 
 namespace ProgramStart
@@ -95,11 +97,24 @@ namespace Converter
 {
     class Html_to_Pdf
     {
+        public static class PrinterClass
+        {
+            [DllImport("winspool.drv", CharSet = CharSet.Auto, SetLastError = true)]
+            public static extern bool SetDefaultPrinter(string Printer);
+        }
         static void Main(string[] args)
         {
-            string cmd = @"RUNDLL32.EXE MSHTML.DLL,PrintHTML ""C:/Temp/fixed.html""";
-            File.WriteAllText(@"C:/Temp/Printer.bat", cmd);
-            Process.Start(@"C:/Temp/Printer.bat");
+            PrinterClass.SetDefaultPrinter("Microsoft Print to PDF");
+
+            int i = 0;
+            while(i < 5)
+            {
+                string filepath = "file:///C:/Temp/fixed" + i + ".html\"";
+                string cmd = "RUNDLL32.EXE MSHTML.DLL,PrintHTML \"" + filepath;
+                File.WriteAllText(@"C:/Temp/Printer.bat", cmd);
+                Process.Start(@"C:/Temp/Printer.bat");
+                i++;
+            }
         }
     }
 }
