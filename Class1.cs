@@ -136,15 +136,15 @@ namespace Converter
                 string cmd = "taskkill /f /im msedge.exe\nstart msedge " + filepath;
                 File.WriteAllText(@"C:/Temp/Printer.bat", cmd);
                 Process.Start(@"C:/Temp/Printer.bat");
-                System.Threading.Thread.Sleep(1000);
+                System.Threading.Thread.Sleep(1500);
                 SendKeys.SendWait("^{P}");
                 System.Threading.Thread.Sleep(500); 
                 SendKeys.SendWait("{Enter}");
-                System.Threading.Thread.Sleep(1500);
+                System.Threading.Thread.Sleep(2000);
                 SendKeys.SendWait(i.ToString());
                 System.Threading.Thread.Sleep(500);
                 SendKeys.SendWait("{Enter}");
-                System.Threading.Thread.Sleep(500);
+                System.Threading.Thread.Sleep(2000);
                 i++;
             }
         }
