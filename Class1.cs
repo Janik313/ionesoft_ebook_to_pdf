@@ -127,7 +127,7 @@ namespace Converter
                 File.WriteAllText(@"C:/Temp/Printer.bat", cmd);
                 Process.Start(@"C:/Temp/Printer.bat");
                 System.Threading.Thread.Sleep(1000);
-                SendKeys.SendWait("{Control}{P}");
+                SendKeys.Send("^{TAB}");
                 System.Threading.Thread.Sleep(5000); 
                 SendKeys.SendWait("{Enter}");
                 System.Threading.Thread.Sleep(1000);
@@ -147,9 +147,7 @@ namespace combiner
     {
         static void Main(string[] args)
         {
-            byte[] pdf = File.ReadAllBytes(@"C:/Temp/fixed1.pdf");
-            byte[] pdf2 = File.ReadAllBytes(@"C:/Temp/fixed02.pdf");
-            File.WriteAllBytes(@"C:/Temp/finish.pdf", pdf + pdf2);
+
         }
     }
 }
