@@ -8,6 +8,8 @@ using System.Net;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using Pechkin.Synchronized;
+using Pechkin;
 
 
 namespace ProgramStart
@@ -145,19 +147,25 @@ namespace Converter
 
             while(i < FM + 1)
             {
-                string filepath = "file:///C:/Temp/fixed/fixed" + i + ".html\"";
-                string cmd = "taskkill /f /im msedge.exe\nstart msedge " + filepath;
-                File.WriteAllText(@"C:/Temp/Printer.bat", cmd);
-                Process.Start(@"C:/Temp/Printer.bat");
-                System.Threading.Thread.Sleep(1500);
-                SendKeys.SendWait("^{P}");
-                System.Threading.Thread.Sleep(500); 
-                SendKeys.SendWait("{Enter}");
-                System.Threading.Thread.Sleep(2000);
-                SendKeys.SendWait(i.ToString());
-                System.Threading.Thread.Sleep(500);
-                SendKeys.SendWait("{Enter}");
-                System.Threading.Thread.Sleep(2000);
+                byte[] html = File.ReadAllBytes(@"C:/Temp/fixed.html");
+                byte[] pdfBuf = new SimplePechkin(new GlobalConfig()).Convert(html);
+                File.WriteAllBytes(@"C:/Temp/pdf.pdf", pdfBuf);
+
+                //string filepath = "file:///C:/Temp/fixed/fixed" + i + ".html\"";
+                //string cmd = "taskkill /f /im msedge.exe\nstart msedge " + filepath;
+                //File.WriteAllText(@"C:/Temp/Printer.bat", cmd);
+                //Process.Start(@"C:/Temp/Printer.bat");
+                //System.Threading.Thread.Sleep(1500);
+                //SendKeys.SendWait("^{P}");
+                //System.Threading.Thread.Sleep(500);
+                //SendKeys.SendWait("{Enter}");
+                //System.Threading.Thread.Sleep(2000);
+                //SendKeys.SendWait(i.ToString());
+                //System.Threading.Thread.Sleep(500);
+                //SendKeys.SendWait("{Enter}");
+                //System.Threading.Thread.Sleep(2000);
+
+
                 i++;
             }
         }
