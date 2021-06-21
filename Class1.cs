@@ -64,7 +64,7 @@ namespace Downloader
 
                 if (content.Contains(htmldefiner))
                 {
-                    string savedirectory = @"C:/Temp/" + i + ".html";
+                    string savedirectory = @"C:/Temp/original/" + i + ".html";
                     System.IO.File.WriteAllText(savedirectory, content);
                     i++;
                     urlnumb++;
@@ -96,7 +96,7 @@ namespace fix
                 {
                     string text = File.ReadAllText(@"C:/Temp/" + i + ".html");
                     text = text.Replace("localhost/", "localhost:7211/");
-                    File.WriteAllText("C:/Temp/fixed" + i + ".html", text);
+                    File.WriteAllText("C:/Temp/fixed/fixed" + i + ".html", text);
                     i++;
                 }
             }
@@ -118,15 +118,16 @@ namespace Converter
 
             PrinterClass.SetDefaultPrinter("Microsoft Print to PDF");
 
-
             int i = 0;
 
             while(i < 5)
             {
-                string filepath = "file:///C:/Temp/fixed" + i + ".html\"";
-                string cmd = "cd C:/Temp\nRUNDLL32.EXE MSHTML.DLL,PrintHTML \"" + filepath;
+                string filepath = "file:///C:/Temp/fixed/fixed" + i + ".html\"";
+                string cmd = "cd C:/Temp/pdf/\nstart msedge " + filepath;
                 File.WriteAllText(@"C:/Temp/Printer.bat", cmd);
                 Process.Start(@"C:/Temp/Printer.bat");
+                System.Threading.Thread.Sleep(1000);
+                SendKeys.SendWait("{Control}{P}");
                 System.Threading.Thread.Sleep(5000); 
                 SendKeys.SendWait("{Enter}");
                 System.Threading.Thread.Sleep(1000);
@@ -142,7 +143,15 @@ namespace Converter
 
 namespace combiner
 {
-
+    class combine
+    {
+        static void Main(string[] args)
+        {
+            byte[] pdf = File.ReadAllBytes(@"C:/Temp/fixed1.pdf");
+            byte[] pdf2 = File.ReadAllBytes(@"C:/Temp/fixed02.pdf");
+            File.WriteAllBytes(@"C:/Temp/finish.pdf", pdf + pdf2);
+        }
+    }
 }
 
 namespace delete
