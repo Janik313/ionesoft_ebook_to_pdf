@@ -133,7 +133,7 @@ namespace Converter
             while(i < FM + 1)
             {
                 string filepath = "file:///C:/Temp/fixed/fixed" + i + ".html\"";
-                string cmd = "cd C:/Temp/pdf/\nstart msedge " + filepath;
+                string cmd = "start msedge " + filepath;
                 File.WriteAllText(@"C:/Temp/Printer.bat", cmd);
                 Process.Start(@"C:/Temp/Printer.bat");
                 System.Threading.Thread.Sleep(1000);
@@ -146,6 +146,9 @@ namespace Converter
                 SendKeys.SendWait(i.ToString());
                 System.Threading.Thread.Sleep(1000);
                 SendKeys.SendWait("{Enter}");
+                System.Threading.Thread.Sleep(500);
+                SendKeys.SendWait("^{W}");
+                System.Threading.Thread.Sleep(1000);
                 i++;
             }
         }
