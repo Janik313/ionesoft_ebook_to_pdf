@@ -45,7 +45,7 @@ namespace Downloader
     {
         static void Main(string[] args)
         {
-            int FM = 704;
+            int FM = 749;
             int MW = 366;
             int NA = 532;
             int RM = 333;
@@ -84,7 +84,7 @@ namespace fix
     {
         static void Main(string[] args)
         {
-            int FM = 704;
+            int FM = 749;
             int MW = 366;
             int NA = 532;
             int RM = 333;

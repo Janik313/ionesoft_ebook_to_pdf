@@ -34,7 +34,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>Downloader.Program</StartupObject>
+    <StartupObject>fix.FixHtml</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Edge.SeleniumTools, Version=3.141.2.0, Culture=neutral, processorArchitecture=MSIL">
