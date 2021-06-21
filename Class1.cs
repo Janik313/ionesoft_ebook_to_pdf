@@ -45,9 +45,14 @@ namespace Downloader
     {
         static void Main(string[] args)
         {
+            int FM = 748;
+            int MW = 366;
+            int NA = 532;
+            int RM = 333;
+            int TD = 267;
             int i = 0;
             int urlnumb = 1;
-            while (i < 5)
+            while (i < FM+1)
             {
                 using var client = new WebClient();
                 client.Headers.Add("User-Agent", "C# console program");
@@ -78,8 +83,13 @@ namespace fix
     {
         static void Main(string[] args)
         {
+            int FM = 748;
+            int MW = 366;
+            int NA = 532;
+            int RM = 333;
+            int TD = 267;
             int i = 0;
-            while(i < 5)
+            while(i < FM+1)
             {
                 if (File.Exists(@"C:/Temp/" + i + ".html"))
                 {
