@@ -158,7 +158,7 @@ namespace combiner
     {
         static void Main(string[] args)
         {
-            File.ReadAllText(@"C:/Temp/pdf/0.pdf");
+
         }
     }
 }
