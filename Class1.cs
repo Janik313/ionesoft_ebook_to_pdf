@@ -118,9 +118,15 @@ namespace Converter
 
             PrinterClass.SetDefaultPrinter("Microsoft Print to PDF");
 
+            int FM = 749;
+            int MW = 366;
+            int NA = 532;
+            int RM = 333;
+            int TD = 267;
+
             int i = 0;
 
-            while(i < 5)
+            while(i < FM + 1)
             {
                 string filepath = "file:///C:/Temp/fixed/fixed" + i + ".html\"";
                 string cmd = "cd C:/Temp/pdf/\nstart msedge " + filepath;
