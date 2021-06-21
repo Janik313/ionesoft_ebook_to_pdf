@@ -7,7 +7,7 @@ using System.IO;
 using System.Net;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
-
+using System.Windows.Forms;
 
 
 namespace ProgramStart
@@ -21,7 +21,7 @@ namespace ProgramStart
                 System.Diagnostics.Process.Start("D:/Apps/Swissmem/Swissmem.exe");
             }
             catch (Exception)
-            {
+            { 
                 System.Diagnostics.Process.Start("C:/Apps/Swissmem/Swissmem.exe");
             }
         }
@@ -115,15 +115,25 @@ namespace Converter
         }
         static void Main(string[] args)
         {
+
             PrinterClass.SetDefaultPrinter("Microsoft Print to PDF");
 
+
             int i = 0;
+
             while(i < 5)
             {
                 string filepath = "file:///C:/Temp/fixed" + i + ".html\"";
-                string cmd = "RUNDLL32.EXE MSHTML.DLL,PrintHTML \"" + filepath;
+                string cmd = "cd C:/Temp\nRUNDLL32.EXE MSHTML.DLL,PrintHTML \"" + filepath;
                 File.WriteAllText(@"C:/Temp/Printer.bat", cmd);
                 Process.Start(@"C:/Temp/Printer.bat");
+                System.Threading.Thread.Sleep(5000); 
+                SendKeys.SendWait("{Enter}");
+                System.Threading.Thread.Sleep(1000);
+                SendKeys.SendWait("{Enter}");
+                System.Threading.Thread.Sleep(1000);
+                SendKeys.SendWait(i.ToString());
+                SendKeys.SendWait("{Enter}");
                 i++;
             }
         }
@@ -145,3 +155,4 @@ namespace delete
         }
     }
 }
+
