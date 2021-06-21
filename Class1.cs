@@ -35,6 +35,7 @@ namespace create
         static void Main(string[] args)
         {
             System.IO.Directory.CreateDirectory("C:/Temp");
+            System.IO.Directory.CreateDirectory("C:/Temp/pdf");
         }
     }
 }
@@ -154,7 +155,7 @@ namespace combiner
     {
         static void Main(string[] args)
         {
-
+            File.ReadAllText(@"C:/Temp/pdf/0.pdf");
         }
     }
 }
