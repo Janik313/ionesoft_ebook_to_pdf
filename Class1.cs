@@ -45,13 +45,15 @@ namespace Downloader
     {
         static void Main(string[] args)
         {
-            int FM = 748;
+            int FM = 704;
             int MW = 366;
             int NA = 532;
             int RM = 333;
             int TD = 267;
             int i = 0;
             int urlnumb = 1;
+            string htmldefiner = "html";
+
             while (i < FM+1)
             {
                 using var client = new WebClient();
@@ -59,7 +61,6 @@ namespace Downloader
 
                 string url = "http://localhost:7211/database/resource/pk/" + urlnumb;
                 string content = client.DownloadString(url);
-                string htmldefiner = "html";
 
                 if (content.Contains(htmldefiner))
                 {
@@ -83,7 +84,7 @@ namespace fix
     {
         static void Main(string[] args)
         {
-            int FM = 748;
+            int FM = 704;
             int MW = 366;
             int NA = 532;
             int RM = 333;
