@@ -9,11 +9,6 @@ using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
-int FM = 749;
-int MW = 366;
-int NA = 532;
-int RM = 333;
-int TD = 267;
 
 namespace ProgramStart
 {
@@ -53,6 +48,11 @@ namespace Downloader
     {
         static void Main(string[] args)
         {
+            int FM = 749;
+            int MW = 366;
+            int NA = 532;
+            int RM = 333;
+            int TD = 267;
             int i = 0;
             int urlnumb = 1;
             string htmldefiner = "html";
@@ -87,6 +87,11 @@ namespace fix
     {
         static void Main(string[] args)
         {
+            int FM = 749;
+            int MW = 366;
+            int NA = 532;
+            int RM = 333;
+            int TD = 267;
             int i = 0;
 
             while(i < FM+1)
@@ -129,6 +134,12 @@ namespace Converter
         {
 
             PrinterClass.SetDefaultPrinter("Microsoft Print to PDF");
+
+            int FM = 749;
+            int MW = 366;
+            int NA = 532;
+            int RM = 333;
+            int TD = 267;
 
             int i = 0;
 
