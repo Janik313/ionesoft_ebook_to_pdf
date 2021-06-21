@@ -43,15 +43,29 @@ namespace Downloader
     {
         static void Main(string[] args)
         {
-            using var client = new WebClient();
-            client.Headers.Add("User-Agent", "C# console program");
+            int i = 0;
+            int urlnumb = 1;
+            while (i < 5)
+            {
+                using var client = new WebClient();
+                client.Headers.Add("User-Agent", "C# console program");
 
-            string url = "http://localhost:7211/database/resource/pk/11440";
-            string content = client.DownloadString(url);
+                string url = "http://localhost:7211/database/resource/pk/" + urlnumb;
+                string content = client.DownloadString(url);
+                string htmldefiner = "html";
 
-
-            System.IO.File.WriteAllText(@"C:/Temp/export.html", content);
-            //Console.WriteLine(content);
+                if (content.Contains(htmldefiner))
+                {
+                    string savedirectory = @"C:/Temp/" + i + ".html";
+                    System.IO.File.WriteAllText(savedirectory, content);
+                    i++;
+                    urlnumb++;
+                }
+                else
+                {
+                    urlnumb++;
+                }
+            }          
         }
     }
 }
@@ -62,9 +76,17 @@ namespace fix
     {
         static void Main(string[] args)
         {
-            string text = File.ReadAllText("C:/Temp/export.html");
-            text = text.Replace("localhost/", "localhost:7211/");
-            File.WriteAllText("C:/Temp/fixed.html", text);
+            int i = 0;
+            while(i < 5)
+            {
+                if (File.Exists(@"C:/Temp/" + i + ".html"))
+                {
+                    string text = File.ReadAllText(@"C:/Temp/" + i + ".html");
+                    text = text.Replace("localhost/", "localhost:7211/");
+                    File.WriteAllText("C:/Temp/fixed" + i + ".html", text);
+                    i++;
+                }
+            }
         }
     }
 }
