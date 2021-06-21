@@ -36,6 +36,8 @@ namespace create
         {
             System.IO.Directory.CreateDirectory("C:/Temp");
             System.IO.Directory.CreateDirectory("C:/Temp/pdf");
+            System.IO.Directory.CreateDirectory("C:/Temp/original");
+            System.IO.Directory.CreateDirectory("C:/Temp/fixed");
         }
     }
 }
@@ -91,11 +93,12 @@ namespace fix
             int RM = 333;
             int TD = 267;
             int i = 0;
+
             while(i < FM+1)
             {
-                if (File.Exists(@"C:/Temp/" + i + ".html"))
+                if (File.Exists(@"C:/Temp/original/" + i + ".html"))
                 {
-                    string text = File.ReadAllText(@"C:/Temp/" + i + ".html");
+                    string text = File.ReadAllText(@"C:/Temp/original/" + i + ".html");
                     text = text.Replace("localhost/", "localhost:7211/");
                     File.WriteAllText("C:/Temp/fixed/fixed" + i + ".html", text);
                     i++;
@@ -141,7 +144,7 @@ namespace Converter
                 SendKeys.SendWait("{Enter}");
                 System.Threading.Thread.Sleep(250);
                 SendKeys.SendWait(i.ToString());
-                System.Threading.Thread.Sleep(250);
+                System.Threading.Thread.Sleep(1000);
                 SendKeys.SendWait("{Enter}");
                 i++;
             }
