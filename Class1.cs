@@ -194,7 +194,7 @@ namespace combiner
     {
             static void Main(string[] args)
             {
-            string[] pdfs = Directory.GetFiles(@"C:/Temp/pdf/", "*.pdf*", SearchOption.AllDirectories;
+            string[] pdfs = Directory.GetFiles(@"C:/Temp/pdf/", "*.pdf*", SearchOption.AllDirectories);
 
             string targetPath = @"C:/Temp/combined.pdf";
                 using (var targetDoc = new PdfDocument())
