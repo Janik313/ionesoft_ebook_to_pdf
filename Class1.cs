@@ -8,6 +8,10 @@ using System.Net;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using PdfSharp;
+using PdfSharp.Pdf;
+using PdfSharp.Pdf.IO;
+
 
 
 namespace ProgramStart
@@ -188,10 +192,21 @@ namespace combiner
 {
     class combine
     {
-        static void Main(string[] args)
-        {
-
-        }
+            static void Main(string targetPath = @"C:/Temp/combined.pdf", params string[] pdfs = @"C:/Temp/pdf/")
+            {
+                using (var targetDoc = new PdfDocument())
+                {
+                    foreach (var pdf in pdfs)
+                    {
+                        using (var pdfDoc = PdfReader.Open(pdf, PdfDocumentOpenMode.Import))
+                        {
+                            for (var i = 0; i < pdfDoc.PageCount; i++)
+                                targetDoc.AddPage(pdfDoc.Pages[i]);
+                        }
+                    }
+                    targetDoc.Save(targetPath);
+                }
+            }
     }
 }
 
