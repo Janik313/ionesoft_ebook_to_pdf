@@ -192,9 +192,11 @@ namespace combiner
 {
     class combine
     {
-            static void Main(string targetPath = @"C:/Temp/combined.pdf", params string[] pdfs = Directory.GetFiles(@"C:/Temp/pdf/", "*.pdf*", SearchOption.AllDirectories);
-)
+            static void Main(string[] args)
             {
+            string[] pdfs = Directory.GetFiles(@"C:/Temp/pdf/", "*.pdf*", SearchOption.AllDirectories;
+
+            string targetPath = @"C:/Temp/combined.pdf";
                 using (var targetDoc = new PdfDocument())
                 {
                     foreach (var pdf in pdfs)
