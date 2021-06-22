@@ -103,6 +103,12 @@ namespace fix
                 {
                     string text = File.ReadAllText(@"C:/Temp/original/" + i + ".html");
                     text = text.Replace("localhost/", "localhost:7211/");
+                    text = text.Replace("Ã¼", "ü");
+                    text = text.Replace("Ã¤", "ä");
+                    text = text.Replace("Ã¶", "ö");
+                    text = text.Replace("Ãœ", "Ü");
+                    //text = text.Replace("", "Ö");
+                    //text = text.Replace("", "Ä");
                     File.WriteAllText("C:/Temp/fixed/fixed" + i + ".html", text);
                     i++;
                 }
