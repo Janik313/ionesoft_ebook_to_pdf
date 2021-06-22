@@ -40,6 +40,7 @@ namespace create
             System.IO.Directory.CreateDirectory("C:/Temp/pdf");
             System.IO.Directory.CreateDirectory("C:/Temp/original");
             System.IO.Directory.CreateDirectory("C:/Temp/fixed");
+            System.IO.Directory.CreateDirectory("C:/Temp/bat");
         }
     }
 }
@@ -110,7 +111,7 @@ namespace fix
     }
 }
 
-namespace xhtmlinstaller
+namespace wkhtmlinstaller
 {
     class install
     {
@@ -118,6 +119,7 @@ namespace xhtmlinstaller
         {
             WebClient webClient = new WebClient();
             webClient.DownloadFile("https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox-0.12.6-1.msvc2015-win64.exe", @"C:/Temp/wkhtmltopdf.exe");
+            System.Threading.Thread.Sleep(1000);
             Process.Start(@"C:/Temp/wkhtmltopdf.exe");
         }
     }
@@ -147,14 +149,15 @@ namespace Converter
 
             while(i < FM + 1)
             {
-                byte[] html = File.ReadAllBytes(@"C:/Temp/fixed.html");
-                byte[] pdfBuf = new SimplePechkin(new GlobalConfig()).Convert(html);
-                File.WriteAllBytes(@"C:/Temp/pdf.pdf", pdfBuf);
+                string filepath = "C:/Temp/fixed/fixed" + i + ".html";
+                string exportpath = "C:/Temp/pdf/pdf" + i + ".pdf";
+                string cmd = "cd C:/Program Files/wkhtmltopdf/bin";
+                string cmd2 = "\nstart wkhtmltopdf.exe " + filepath + " " + exportpath;
+                File.WriteAllText(@"C:/Temp/bat/" + i + ".bat", cmd + cmd2);
+                Process.Start(@"C:/Temp/bat/" + i + ".bat");
+                i++;
 
-                //string filepath = "file:///C:/Temp/fixed/fixed" + i + ".html\"";
-                //string cmd = "taskkill /f /im msedge.exe\nstart msedge " + filepath;
-                //File.WriteAllText(@"C:/Temp/Printer.bat", cmd);
-                //Process.Start(@"C:/Temp/Printer.bat");
+                //Alter Code, welcher vielleicht wiederverwendet wird.
                 //System.Threading.Thread.Sleep(1500);
                 //SendKeys.SendWait("^{P}");
                 //System.Threading.Thread.Sleep(500);
@@ -164,9 +167,6 @@ namespace Converter
                 //System.Threading.Thread.Sleep(500);
                 //SendKeys.SendWait("{Enter}");
                 //System.Threading.Thread.Sleep(2000);
-
-
-                i++;
             }
         }
     }
