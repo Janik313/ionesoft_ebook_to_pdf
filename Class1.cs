@@ -152,7 +152,7 @@ namespace Converter
                 string filepath = "C:/Temp/fixed/fixed" + i + ".html";
                 string exportpath = "C:/Temp/pdf/pdf" + i + ".pdf";
                 string cmd = "cd C:/Program Files/wkhtmltopdf/bin";
-                string cmd2 = "\nstart wkhtmltopdf.exe " + filepath + " " + exportpath;
+                string cmd2 = "\nstart wkhtmltopdf.exe --page-size A6 --margin-bottom 0 --margin-left 0 --margin-right 0 --margin-top 0 " + filepath + " " + exportpath;
                 File.WriteAllText(@"C:/Temp/bat/" + i + ".bat", cmd + cmd2);
                 Process.Start(@"C:/Temp/bat/" + i + ".bat");
                 i++;
