@@ -8,8 +8,6 @@ using System.Net;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using Pechkin.Synchronized;
-using Pechkin;
 
 
 namespace ProgramStart
