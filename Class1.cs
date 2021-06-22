@@ -106,7 +106,13 @@ namespace fix
                     text = text.Replace("Ã¶", "ö");
                     text = text.Replace("Ãœ", "Ü");
                     text = text.Replace("ÃŸ", "ß");
-                    text = text.Replace("Â·", "·");
+                    text = text.Replace("â€¢", "•");
+                    text = text.Replace("â€¦", "...");
+                    text = text.Replace("â€ž", "„");
+                    text = text.Replace("â€œ", "“");
+                    text = text.Replace("Â", "");
+                    text = text.Replace("â€“", "-");
+
                     //text = text.Replace("", "Ö");
                     //text = text.Replace("", "Ä");
                     File.WriteAllText("C:/Temp/fixed/fixed" + i + ".html", text);
