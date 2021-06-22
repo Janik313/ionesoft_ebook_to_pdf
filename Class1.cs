@@ -70,7 +70,11 @@ namespace Downloader
                 string url = "http://localhost:7211/database/resource/pk/" + urlnumb;
                 string content = client.DownloadString(url);
 
-                if (content.Contains(htmldefiner))
+                if (content.Contains("Adobe Systems Incorporated"))
+                {
+                    urlnumb++;
+                }
+                else if(content.Contains(htmldefiner))
                 {
                     string savedirectory = @"C:/Temp/original/" + i + ".html";
                     System.IO.File.WriteAllText(savedirectory, content);
@@ -219,7 +223,10 @@ namespace delete
     {
         static void Main(string[] args)
         {
-            System.IO.Directory.Delete("C:/Temp", true);
+            System.IO.Directory.Delete("C:/Temp/bat", true);
+            System.IO.Directory.Delete("C:/Temp/fixed", true);
+            System.IO.Directory.Delete("C:/Temp/original", true);
+            System.IO.Directory.Delete("C:/Temp/pdf", true);
         }
     }
 }
