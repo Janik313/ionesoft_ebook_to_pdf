@@ -120,6 +120,9 @@ namespace fix
                     text = text.Replace("â€œ", "“");
                     text = text.Replace("Â", "");
                     text = text.Replace("â€“", "-");
+                    text = text.Replace("http://localhost:7211/database/resource/pk/564", "");
+                    text = text.Replace("_idContainer068", "");
+                    
 
                     //text = text.Replace("", "Ö");
                     //text = text.Replace("", "Ä");
