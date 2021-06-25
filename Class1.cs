@@ -120,8 +120,7 @@ namespace fix
                     text = text.Replace("â€œ", "“");
                     text = text.Replace("Â", "");
                     text = text.Replace("â€“", "-");
-                    text = text.Replace("http://localhost:7211/database/resource/pk/564", "");
-                    text = text.Replace("_idContainer068", "");
+                    text = text.Replace(@"<img class=""_idGenObjectAttribute-1 _idGenObjectAttribute-2"" src=""http://localhost:7211/database/resource/pk/564"" data-original=""image/Kap1rechts.png"" alt="""" />", "");
                     
 
                     //text = text.Replace("", "Ö");
