@@ -193,7 +193,7 @@ namespace WindowsFormsApp1
             if (SelectedBook == "NA")
             {
 
-                int NA = 532;
+                int NA = 524;
                 int i = 0;
                 int urlnumb = 7491;
                 string htmldefiner = "html";
