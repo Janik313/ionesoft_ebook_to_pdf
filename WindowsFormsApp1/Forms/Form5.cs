@@ -23,25 +23,81 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+
+                string SelectedBook = File.ReadAllText(@"C:/Temp/SelectedBook.txt");
                 int FileCount = Directory.GetFiles(@"C:/Temp/fixed/").Length;
                 int i = 0;
                 int filename = 001;
-
+            if (SelectedBook == "FM")
+            {
                 while (i < FileCount + 1)
                 {
                     string filepath = "C:/Temp/fixed/fixed" + i + ".html";
                     string exportpath = "C:/Temp/pdf/" + filename.ToString("0000") + ".pdf";
                     string cmd = "C:\ncd C:/Program Files/wkhtmltopdf/bin";
-                    string cmd2 = "\nstart wkhtmltopdf.exe --page-size A6 --margin-bottom 0 --margin-left 0 --margin-right 0 --margin-top 0 " + filepath + " " + exportpath;
+                    string cmd2 = "\nstart wkhtmltopdf.exe --page-width 482px --page-height 680px --margin-bottom 0 --margin-left 0 --margin-right 0 --margin-top 0 " + filepath + " " + exportpath;
                     File.WriteAllText(@"C:/Temp/bat/" + i + ".bat", cmd + cmd2);
                     Process.Start(@"C:/Temp/bat/" + i + ".bat");
                     i++;
                     filename++;
                 }
-
-
-                
+            }
+            else if (SelectedBook == "TD")
+            {
+                while (i < FileCount + 1)
+                {
+                    string filepath = "C:/Temp/fixed/fixed" + i + ".html";
+                    string exportpath = "C:/Temp/pdf/" + filename.ToString("0000") + ".pdf";
+                    string cmd = "C:\ncd C:/Program Files/wkhtmltopdf/bin";
+                    string cmd2 = "\nstart wkhtmltopdf.exe --page-width 595px --page-height 842 --margin-bottom 0 --margin-left 0 --margin-right 0 --margin-top 0 " + filepath + " " + exportpath;
+                    File.WriteAllText(@"C:/Temp/bat/" + i + ".bat", cmd + cmd2);
+                    Process.Start(@"C:/Temp/bat/" + i + ".bat");
+                    i++;
+                    filename++;
+                }
+            }
+            else if (SelectedBook == "MW")
+            {
+                while (i < FileCount + 1)
+                {
+                    string filepath = "C:/Temp/fixed/fixed" + i + ".html";
+                    string exportpath = "C:/Temp/pdf/" + filename.ToString("0000") + ".pdf";
+                    string cmd = "C:\ncd C:/Program Files/wkhtmltopdf/bin";
+                    string cmd2 = "\nstart wkhtmltopdf.exe --page-width 595px --page-height 842 --margin-bottom 0 --margin-left 0 --margin-right 0 --margin-top 0 " + filepath + " " + exportpath;
+                    File.WriteAllText(@"C:/Temp/bat/" + i + ".bat", cmd + cmd2);
+                    Process.Start(@"C:/Temp/bat/" + i + ".bat");
+                    i++;
+                    filename++;
+                }
+            }
+            else if (SelectedBook == "NA")
+            {
+                while (i < FileCount + 1)
+                {
+                    string filepath = "C:/Temp/fixed/fixed" + i + ".html";
+                    string exportpath = "C:/Temp/pdf/" + filename.ToString("0000") + ".pdf";
+                    string cmd = "C:\ncd C:/Program Files/wkhtmltopdf/bin";
+                    string cmd2 = "\nstart wkhtmltopdf.exe --page-width 439px --page-height 595px --margin-bottom 0 --margin-left 0 --margin-right 0 --margin-top 0 " + filepath + " " + exportpath;
+                    File.WriteAllText(@"C:/Temp/bat/" + i + ".bat", cmd + cmd2);
+                    Process.Start(@"C:/Temp/bat/" + i + ".bat");
+                    i++;
+                    filename++;
+                }
+            }
+            else if (SelectedBook == "RM")
+            {
+                while (i < FileCount + 1)
+                {
+                    string filepath = "C:/Temp/fixed/fixed" + i + ".html";
+                    string exportpath = "C:/Temp/pdf/" + filename.ToString("0000") + ".pdf";
+                    string cmd = "C:\ncd C:/Program Files/wkhtmltopdf/bin";
+                    string cmd2 = "\nstart wkhtmltopdf.exe --page-width 736px --page-height 1039 --margin-bottom 0 --margin-left 0 --margin-right 0 --margin-top 0 " + filepath + " " + exportpath;
+                    File.WriteAllText(@"C:/Temp/bat/" + i + ".bat", cmd + cmd2);
+                    Process.Start(@"C:/Temp/bat/" + i + ".bat");
+                    i++;
+                    filename++;
+                }
+            }
             }
 
         private void button2_Click(object sender, EventArgs e)

@@ -32,7 +32,6 @@ namespace WindowsFormsApp1
 
             while (i < FileCount)
             {
-                    File.WriteAllText(@"C:/Temp/ajksd.txt", FileCount.ToString());
                     string text = File.ReadAllText(@"C:/Temp/original/" + i + ".html");
                     text = text.Replace("localhost/", "localhost:7211/");
                     text = text.Replace("Ã¼", "ü");
@@ -102,7 +101,7 @@ namespace WindowsFormsApp1
             }
             if (SelectedBook == "TD")
             {
-                int TD = 265;
+                int TD = 264;
                 int i = 0;
                 int urlnumb = 14830;
                 string htmldefiner = "html";
@@ -120,6 +119,9 @@ namespace WindowsFormsApp1
                         urlnumb++;
                     }
                     else if (content.Contains("VeriSign Commercial Software Publishers"))
+                    {
+                        urlnumb++;
+                    }else if(content.Contains("Adobe XMP Core"))
                     {
                         urlnumb++;
                     }
