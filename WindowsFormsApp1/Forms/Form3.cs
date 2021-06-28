@@ -80,6 +80,10 @@ namespace WindowsFormsApp1
                     {
                         urlnumb++;
                     }
+                    else if (content.Contains("<div id="))
+                    {
+                        urlnumb++;
+                    }
                     else if (content.Contains(htmldefiner))
                     {
                         string savedirectory = @"C:/Temp/original/" + i + ".html";
@@ -112,6 +116,10 @@ namespace WindowsFormsApp1
                     string content = client.DownloadString(url);
 
                     if (content.Contains("Adobe Systems Incorporated"))
+                    {
+                        urlnumb++;
+                    }
+                    else if (content.Contains("<div id="))
                     {
                         urlnumb++;
                     }
@@ -148,6 +156,10 @@ namespace WindowsFormsApp1
                     {
                         urlnumb++;
                     }
+                    else if (content.Contains("<div id="))
+                    {
+                        urlnumb++;
+                    }
                     else if (content.Contains(htmldefiner))
                     {
                         string savedirectory = @"C:/Temp/original/" + i + ".html";
@@ -181,6 +193,10 @@ namespace WindowsFormsApp1
                     {
                         urlnumb++;
                     }
+                    else if (content.Contains("<div id="))
+                    {
+                        urlnumb++;
+                    }
                     else if (content.Contains(htmldefiner))
                     {
                         string savedirectory = @"C:/Temp/original/" + i + ".html";
@@ -210,6 +226,10 @@ namespace WindowsFormsApp1
                     string content = client.DownloadString(url);
 
                     if (content.Contains("Adobe Systems Incorporated"))
+                    {
+                        urlnumb++;
+                    }
+                    else if (content.Contains("<div id="))
                     {
                         urlnumb++;
                     }
