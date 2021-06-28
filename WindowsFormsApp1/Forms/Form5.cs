@@ -42,34 +42,40 @@ namespace WindowsFormsApp1
                 }
 
 
-                
+                string FileName = File.ReadAllText(@"C:/Temp/SelectedBook.txt");
+                string[] pdfs = Directory.GetFiles(@"C:/Temp/pdf/", "*.pdf*", SearchOption.AllDirectories);
+
+                string targetPath = @"C:/Temp/" + FileName + ".pdf";
+                using (var targetDoc = new PdfDocument())
+                {
+                    foreach (var pdf in pdfs)
+                    {
+                        using (var pdfDoc = PdfReader.Open(pdf, PdfDocumentOpenMode.Import))
+                        {
+                            for (var y = 0; y < pdfDoc.PageCount; y++)
+                                targetDoc.AddPage(pdfDoc.Pages[y]);
+                        }
+                    }
+                    targetDoc.Save(targetPath);
+                }
             }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             this.Hide();
-            string[] pdfs = Directory.GetFiles(@"C:/Temp/pdf/", "*.pdf*", SearchOption.AllDirectories);
-
-            string targetPath = @"C:/Temp/combined.pdf";
-            using (var targetDoc = new PdfDocument())
-            {
-                foreach (var pdf in pdfs)
-                {
-                    using (var pdfDoc = PdfReader.Open(pdf, PdfDocumentOpenMode.Import))
-                    {
-                        for (var i = 0; i < pdfDoc.PageCount; i++)
-                            targetDoc.AddPage(pdfDoc.Pages[i]);
-                    }
-                }
-                targetDoc.Save(targetPath);
-            }
             System.Threading.Thread.Sleep(15000);
             System.IO.Directory.Delete("C:/Temp/bat", true);
             System.IO.Directory.Delete("C:/Temp/fixed", true);
             System.IO.Directory.Delete("C:/Temp/original", true);
             System.IO.Directory.Delete("C:/Temp/pdf", true);
             System.Windows.Forms.Application.ExitThread();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            string FileName = File.ReadAllText(@"C:/Temp/SelectedBook.txt");
+            Process.Start(@"C:/Temp/" + FileName + ".pdf");
         }
     }
 }
