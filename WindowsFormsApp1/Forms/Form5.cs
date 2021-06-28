@@ -35,7 +35,7 @@ namespace WindowsFormsApp1
                     string filepath = "C:/Temp/fixed/fixed" + i + ".html";
                     string exportpath = "C:/Temp/pdf/" + filename.ToString("0000") + ".pdf";
                     string cmd = "C:\ncd C:/Program Files/wkhtmltopdf/bin";
-                    string cmd2 = "\nstart wkhtmltopdf.exe --page-width 482px --page-height 680px --margin-bottom 0 --margin-left 0 --margin-right 0 --margin-top 0 " + filepath + " " + exportpath;
+                    string cmd2 = "\nstart wkhtmltopdf.exe --page-width 128mm --page-height 180mm --margin-bottom 0 --margin-left 0 --margin-right 0 --margin-top 0 --disable-smart-shrinking " + filepath + " " + exportpath;
                     File.WriteAllText(@"C:/Temp/bat/" + i + ".bat", cmd + cmd2);
                     Process.Start(@"C:/Temp/bat/" + i + ".bat");
                     i++;
@@ -49,7 +49,7 @@ namespace WindowsFormsApp1
                     string filepath = "C:/Temp/fixed/fixed" + i + ".html";
                     string exportpath = "C:/Temp/pdf/" + filename.ToString("0000") + ".pdf";
                     string cmd = "C:\ncd C:/Program Files/wkhtmltopdf/bin";
-                    string cmd2 = "\nstart wkhtmltopdf.exe --page-width 595px --page-height 842 --margin-bottom 0 --margin-left 0 --margin-right 0 --margin-top 0 " + filepath + " " + exportpath;
+                    string cmd2 = "\nstart wkhtmltopdf.exe --page-width 158mm --page-height 223mm --margin-bottom 0 --margin-left 0 --margin-right 0 --margin-top 0 --disable-smart-shrinking " + filepath + " " + exportpath;
                     File.WriteAllText(@"C:/Temp/bat/" + i + ".bat", cmd + cmd2);
                     Process.Start(@"C:/Temp/bat/" + i + ".bat");
                     i++;
@@ -63,7 +63,7 @@ namespace WindowsFormsApp1
                     string filepath = "C:/Temp/fixed/fixed" + i + ".html";
                     string exportpath = "C:/Temp/pdf/" + filename.ToString("0000") + ".pdf";
                     string cmd = "C:\ncd C:/Program Files/wkhtmltopdf/bin";
-                    string cmd2 = "\nstart wkhtmltopdf.exe --page-width 595px --page-height 842 --margin-bottom 0 --margin-left 0 --margin-right 0 --margin-top 0 " + filepath + " " + exportpath;
+                    string cmd2 = "\nstart wkhtmltopdf.exe --page-width 158mm --page-height 223mm --margin-bottom 0 --margin-left 0 --margin-right 0 --margin-top 0 --disable-smart-shrinking " + filepath + " " + exportpath;
                     File.WriteAllText(@"C:/Temp/bat/" + i + ".bat", cmd + cmd2);
                     Process.Start(@"C:/Temp/bat/" + i + ".bat");
                     i++;
@@ -77,7 +77,7 @@ namespace WindowsFormsApp1
                     string filepath = "C:/Temp/fixed/fixed" + i + ".html";
                     string exportpath = "C:/Temp/pdf/" + filename.ToString("0000") + ".pdf";
                     string cmd = "C:\ncd C:/Program Files/wkhtmltopdf/bin";
-                    string cmd2 = "\nstart wkhtmltopdf.exe --page-width 439px --page-height 595px --margin-bottom 0 --margin-left 0 --margin-right 0 --margin-top 0 " + filepath + " " + exportpath;
+                    string cmd2 = "\nstart wkhtmltopdf.exe --page-width 117mm --page-height 158mm --margin-bottom 0 --margin-left 0 --margin-right 0 --margin-top 0 --disable-smart-shrinking " + filepath + " " + exportpath;
                     File.WriteAllText(@"C:/Temp/bat/" + i + ".bat", cmd + cmd2);
                     Process.Start(@"C:/Temp/bat/" + i + ".bat");
                     i++;
@@ -91,7 +91,7 @@ namespace WindowsFormsApp1
                     string filepath = "C:/Temp/fixed/fixed" + i + ".html";
                     string exportpath = "C:/Temp/pdf/" + filename.ToString("0000") + ".pdf";
                     string cmd = "C:\ncd C:/Program Files/wkhtmltopdf/bin";
-                    string cmd2 = "\nstart wkhtmltopdf.exe --page-width 736px --page-height 1039 --margin-bottom 0 --margin-left 0 --margin-right 0 --margin-top 0 " + filepath + " " + exportpath;
+                    string cmd2 = "\nstart wkhtmltopdf.exe --page-width 195mm --page-height 275mm --margin-bottom 0 --margin-left 0 --margin-right 0 --margin-top 0 --disable-smart-shrinking " + filepath + " " + exportpath;
                     File.WriteAllText(@"C:/Temp/bat/" + i + ".bat", cmd + cmd2);
                     Process.Start(@"C:/Temp/bat/" + i + ".bat");
                     i++;
