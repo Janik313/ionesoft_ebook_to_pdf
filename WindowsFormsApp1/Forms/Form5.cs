@@ -58,7 +58,6 @@ namespace WindowsFormsApp1
                     targetDoc.Save(targetPath);
                 }
             }
-        }
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -77,4 +76,5 @@ namespace WindowsFormsApp1
             Process.Start(@"C:/Temp/" + FileName + ".pdf");
         }
     }
+
 }
