@@ -53,7 +53,7 @@ namespace Downloader
     {
         static void Main(string[] args)
         {
-            int FM = 749;
+            int FM = 703;
             int MW = 366;
             int NA = 532;
             int RM = 333;
@@ -96,7 +96,7 @@ namespace fix
     {
         static void Main(string[] args)
         {
-            int FM = 749;
+            int FM = 703;
             int MW = 366;
             int NA = 532;
             int RM = 333;
@@ -120,6 +120,8 @@ namespace fix
                     text = text.Replace("â€œ", "“");
                     text = text.Replace("Â", "");
                     text = text.Replace("â€“", "-");
+                    text = text.Replace(@"<img class=""_idGenObjectAttribute-1 _idGenObjectAttribute-2"" src=""http://localhost:7211/database/resource/pk/564"" data-original=""image/Kap1rechts.png"" alt="""" />", "");
+                    
 
                     //text = text.Replace("", "Ö");
                     //text = text.Replace("", "Ä");
@@ -159,23 +161,25 @@ namespace Converter
 
             PrinterClass.SetDefaultPrinter("Microsoft Print to PDF");
 
-            int FM = 749;
+            int FM = 703;
             int MW = 366;
             int NA = 532;
             int RM = 333;
             int TD = 267;
 
             int i = 0;
+            int filename = 001;
 
             while(i < FM + 1)
             {
                 string filepath = "C:/Temp/fixed/fixed" + i + ".html";
-                string exportpath = "C:/Temp/pdf/pdf" + i + ".pdf";
-                string cmd = "cd C:/Program Files/wkhtmltopdf/bin";
+                string exportpath = "C:/Temp/pdf/" + filename.ToString("0000") + ".pdf";
+                string cmd = "C:\ncd C:/Program Files/wkhtmltopdf/bin";
                 string cmd2 = "\nstart wkhtmltopdf.exe --page-size A6 --margin-bottom 0 --margin-left 0 --margin-right 0 --margin-top 0 " + filepath + " " + exportpath;
                 File.WriteAllText(@"C:/Temp/bat/" + i + ".bat", cmd + cmd2);
                 Process.Start(@"C:/Temp/bat/" + i + ".bat");
                 i++;
+                filename++;
 
                 //Alter Code, welcher vielleicht wiederverwendet wird.
                 //System.Threading.Thread.Sleep(1500);
