@@ -45,6 +45,10 @@ namespace WindowsFormsApp1
                     text = text.Replace("â€œ", "“");
                     text = text.Replace("Â", "");
                     text = text.Replace("â€“", "-");
+                    text = text.Replace("Ã—", "×");
+                    text = text.Replace("Ã©", "é");
+                    text = text.Replace("â€™", "’");
+                    text = text.Replace("Î±", "α");
                     text = text.Replace(@"<img class=""_idGenObjectAttribute-1 _idGenObjectAttribute-2"" src=""http://localhost:7211/database/resource/pk/564"" data-original=""image/Kap1rechts.png"" alt="""" />", "");
 
 
@@ -78,6 +82,9 @@ namespace WindowsFormsApp1
                     if (content.Contains("Adobe Systems Incorporated"))
                     {
                         urlnumb++;
+                    }else if (content.Contains("http://www.monotype.com/html"))
+                    {
+                        urlnumb++;
                     }
                     else if (content.Contains("VeriSign Commercial Software Publishers"))
                     {
@@ -101,7 +108,7 @@ namespace WindowsFormsApp1
             }
             if (SelectedBook == "TD")
             {
-                int TD = 264;
+                int TD = 259;
                 int i = 0;
                 int urlnumb = 14830;
                 string htmldefiner = "html";
@@ -115,6 +122,10 @@ namespace WindowsFormsApp1
                     string content = client.DownloadString(url);
 
                     if (content.Contains("Adobe Systems Incorporated"))
+                    {
+                        urlnumb++;
+                    }
+                    else if (content.Contains("http://www.monotype.com/html"))
                     {
                         urlnumb++;
                     }
@@ -158,6 +169,10 @@ namespace WindowsFormsApp1
                     {
                         urlnumb++;
                     }
+                    else if (content.Contains("http://www.monotype.com/html"))
+                    {
+                        urlnumb++;
+                    }
                     else if (content.Contains("VeriSign Commercial Software Publishers"))
                     {
                         urlnumb++;
@@ -195,6 +210,10 @@ namespace WindowsFormsApp1
                     {
                         urlnumb++;
                     }
+                    else if (content.Contains("http://www.monotype.com/html"))
+                    {
+                        urlnumb++;
+                    }
                     else if (content.Contains("VeriSign Commercial Software Publishers"))
                     {
                         urlnumb++;
@@ -228,6 +247,10 @@ namespace WindowsFormsApp1
                     string content = client.DownloadString(url);
 
                     if (content.Contains("Adobe Systems Incorporated"))
+                    {
+                        urlnumb++;
+                    }
+                    else if (content.Contains("http://www.monotype.com/html"))
                     {
                         urlnumb++;
                     }
