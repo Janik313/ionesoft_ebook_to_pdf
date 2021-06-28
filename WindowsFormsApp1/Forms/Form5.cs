@@ -103,7 +103,6 @@ namespace WindowsFormsApp1
         private void button2_Click(object sender, EventArgs e)
         {
             this.Hide();
-            System.Threading.Thread.Sleep(15000);
             System.IO.Directory.Delete("C:/Temp/bat", true);
             System.IO.Directory.Delete("C:/Temp/fixed", true);
             System.IO.Directory.Delete("C:/Temp/original", true);
