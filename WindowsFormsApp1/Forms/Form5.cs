@@ -23,8 +23,7 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            static void Main(string[] args)
-            {
+            
                 int FileCount = Directory.GetFiles(@"C:/Temp/fixed/").Length;
                 int i = 0;
                 int filename = 001;

@@ -30,10 +30,9 @@ namespace WindowsFormsApp1
             int FileCount = Directory.GetFiles(@"C:/Temp/original/").Length;
             int i = 0;
 
-            while (i < FileCount + 1)
+            while (i < FileCount)
             {
-                if (File.Exists(@"C:/Temp/original/" + i + ".html"))
-                {
+                    File.WriteAllText(@"C:/Temp/ajksd.txt", FileCount.ToString());
                     string text = File.ReadAllText(@"C:/Temp/original/" + i + ".html");
                     text = text.Replace("localhost/", "localhost:7211/");
                     text = text.Replace("Ã¼", "ü");
@@ -54,8 +53,6 @@ namespace WindowsFormsApp1
                     //text = text.Replace("", "Ä");
                     File.WriteAllText("C:/Temp/fixed/fixed" + i + ".html", text);
                     i++;
-
-                }
             }
         }
 
@@ -66,12 +63,12 @@ namespace WindowsFormsApp1
 
             if (SelectedBook == "FM")
             {
-                int FM = 703;
+                int FM = 704;
                 int i = 0;
                 int urlnumb = 1;
                 string htmldefiner = "html";
 
-                while (i < FM + 1)
+                while (i < FM)
                 {
                     using var client = new WebClient();
                     client.Headers.Add("User-Agent", "C# console program");
@@ -106,7 +103,7 @@ namespace WindowsFormsApp1
                 int urlnumb = 14830;
                 string htmldefiner = "html";
 
-                while (i < TD + 1)
+                while (i < TD)
                 {
                     using var client = new WebClient();
                     client.Headers.Add("User-Agent", "C# console program");
@@ -139,7 +136,7 @@ namespace WindowsFormsApp1
                 int urlnumb = 11264;
                 string htmldefiner = "html";
 
-                while (i < RM + 1)
+                while (i < RM)
                 {
                     using var client = new WebClient();
                     client.Headers.Add("User-Agent", "C# console program");
@@ -172,7 +169,7 @@ namespace WindowsFormsApp1
                 int urlnumb = 7491;
                 string htmldefiner = "html";
 
-                while (i < NA + 1)
+                while (i < NA)
                 {
                     using var client = new WebClient();
                     client.Headers.Add("User-Agent", "C# console program");
@@ -204,7 +201,7 @@ namespace WindowsFormsApp1
                 int urlnumb = 4749;
                 string htmldefiner = "html";
 
-                while (i < MW + 1)
+                while (i < MW)
                 {
                     using var client = new WebClient();
                     client.Headers.Add("User-Agent", "C# console program");
