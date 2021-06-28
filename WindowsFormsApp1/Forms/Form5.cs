@@ -65,6 +65,10 @@ namespace WindowsFormsApp1
                 targetDoc.Save(targetPath);
             }
             System.Threading.Thread.Sleep(15000);
+            System.IO.Directory.Delete("C:/Temp/bat", true);
+            System.IO.Directory.Delete("C:/Temp/fixed", true);
+            System.IO.Directory.Delete("C:/Temp/original", true);
+            System.IO.Directory.Delete("C:/Temp/pdf", true);
             System.Windows.Forms.Application.ExitThread();
         }
     }
