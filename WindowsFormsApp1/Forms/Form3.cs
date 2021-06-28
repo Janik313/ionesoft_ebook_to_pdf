@@ -80,7 +80,7 @@ namespace WindowsFormsApp1
                     {
                         urlnumb++;
                     }
-                    else if (content.Contains("<div id="))
+                    else if (content.Contains("VeriSign Commercial Software Publishers"))
                     {
                         urlnumb++;
                     }
@@ -102,7 +102,7 @@ namespace WindowsFormsApp1
             }
             if (SelectedBook == "TD")
             {
-                int TD = 267;
+                int TD = 265;
                 int i = 0;
                 int urlnumb = 14830;
                 string htmldefiner = "html";
@@ -119,7 +119,7 @@ namespace WindowsFormsApp1
                     {
                         urlnumb++;
                     }
-                    else if (content.Contains("<div id="))
+                    else if (content.Contains("VeriSign Commercial Software Publishers"))
                     {
                         urlnumb++;
                     }
@@ -139,7 +139,7 @@ namespace WindowsFormsApp1
             if (SelectedBook == "RM")
             {
 
-                int RM = 333;
+                int RM = 340;
                 int i = 0;
                 int urlnumb = 11264;
                 string htmldefiner = "html";
@@ -156,7 +156,7 @@ namespace WindowsFormsApp1
                     {
                         urlnumb++;
                     }
-                    else if (content.Contains("<div id="))
+                    else if (content.Contains("VeriSign Commercial Software Publishers"))
                     {
                         urlnumb++;
                     }
@@ -193,7 +193,7 @@ namespace WindowsFormsApp1
                     {
                         urlnumb++;
                     }
-                    else if (content.Contains("<div id="))
+                    else if (content.Contains("VeriSign Commercial Software Publishers"))
                     {
                         urlnumb++;
                     }
@@ -212,7 +212,7 @@ namespace WindowsFormsApp1
             }
             if (SelectedBook == "MW")
             {
-                int MW = 366;
+                int MW = 373;
                 int i = 0;
                 int urlnumb = 4749;
                 string htmldefiner = "html";
@@ -229,7 +229,7 @@ namespace WindowsFormsApp1
                     {
                         urlnumb++;
                     }
-                    else if (content.Contains("<div id="))
+                    else if (content.Contains("VeriSign Commercial Software Publishers"))
                     {
                         urlnumb++;
                     }
