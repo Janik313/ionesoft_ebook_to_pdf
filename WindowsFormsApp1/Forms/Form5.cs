@@ -11,6 +11,9 @@ using System.Runtime.InteropServices;
 using PdfSharp;
 using PdfSharp.Pdf;
 using PdfSharp.Pdf.IO;
+using iTextSharp.text.pdf;
+using iTextSharp.text;
+using iTextSharp.xtra.iTextSharp.text.pdf.pdfcleanup;
 
 namespace WindowsFormsApp1
 {
@@ -35,7 +38,7 @@ namespace WindowsFormsApp1
                     string filepath = "C:/Temp/fixed/fixed" + i + ".html";
                     string exportpath = "C:/Temp/pdf/" + filename.ToString("0000") + ".pdf";
                     string cmd = "C:\ncd C:/Program Files/wkhtmltopdf/bin";
-                    string cmd2 = "\nstart wkhtmltopdf.exe --page-width 128mm --page-height 180mm --margin-bottom 0 --margin-left 0 --margin-right 0 --margin-top 0 --disable-smart-shrinking " + filepath + " " + exportpath;
+                    string cmd2 = "\nstart wkhtmltopdf.exe --page-width 128mm --page-height 180mm --margin-bottom 0 --margin-left 0 --margin-right 0 --margin-top 0 --disable-smart-shrinking --viewport-size 1920x1080 " + filepath + " " + exportpath;
                     File.WriteAllText(@"C:/Temp/bat/" + i + ".bat", cmd + cmd2);
                     Process.Start(@"C:/Temp/bat/" + i + ".bat");
                     i++;
@@ -49,7 +52,7 @@ namespace WindowsFormsApp1
                     string filepath = "C:/Temp/fixed/fixed" + i + ".html";
                     string exportpath = "C:/Temp/pdf/" + filename.ToString("0000") + ".pdf";
                     string cmd = "C:\ncd C:/Program Files/wkhtmltopdf/bin";
-                    string cmd2 = "\nstart wkhtmltopdf.exe --page-width 158mm --page-height 223mm --margin-bottom 0 --margin-left 0 --margin-right 0 --margin-top 0 --disable-smart-shrinking " + filepath + " " + exportpath;
+                    string cmd2 = "\nstart wkhtmltopdf.exe --page-width 158mm --page-height 223mm --margin-bottom 0 --margin-left 0 --margin-right 0 --margin-top 0 --disable-smart-shrinking --viewport-size 1920x1080 " + filepath + " " + exportpath;
                     File.WriteAllText(@"C:/Temp/bat/" + i + ".bat", cmd + cmd2);
                     Process.Start(@"C:/Temp/bat/" + i + ".bat");
                     i++;
@@ -63,7 +66,7 @@ namespace WindowsFormsApp1
                     string filepath = "C:/Temp/fixed/fixed" + i + ".html";
                     string exportpath = "C:/Temp/pdf/" + filename.ToString("0000") + ".pdf";
                     string cmd = "C:\ncd C:/Program Files/wkhtmltopdf/bin";
-                    string cmd2 = "\nstart wkhtmltopdf.exe --page-width 158mm --page-height 223mm --margin-bottom 0 --margin-left 0 --margin-right 0 --margin-top 0 --disable-smart-shrinking " + filepath + " " + exportpath;
+                    string cmd2 = "\nstart wkhtmltopdf.exe --page-width 158mm --page-height 223mm --margin-bottom 0 --margin-left 0 --margin-right 0 --margin-top 0 --disable-smart-shrinking --viewport-size 1920x1080 " + filepath + " " + exportpath;
                     File.WriteAllText(@"C:/Temp/bat/" + i + ".bat", cmd + cmd2);
                     Process.Start(@"C:/Temp/bat/" + i + ".bat");
                     i++;
@@ -77,7 +80,7 @@ namespace WindowsFormsApp1
                     string filepath = "C:/Temp/fixed/fixed" + i + ".html";
                     string exportpath = "C:/Temp/pdf/" + filename.ToString("0000") + ".pdf";
                     string cmd = "C:\ncd C:/Program Files/wkhtmltopdf/bin";
-                    string cmd2 = "\nstart wkhtmltopdf.exe --page-width 90mm --page-height 200mm --margin-bottom 0 --margin-left 0 --margin-right 0 --margin-top 0 " + filepath + " " + exportpath;
+                    string cmd2 = "\nstart wkhtmltopdf.exe --page-width 90mm --page-height 205mm --margin-bottom 0 --margin-left 0 --margin-right 0 --margin-top 0 --viewport-size 1920x1080 " + filepath + " " + exportpath;
                     File.WriteAllText(@"C:/Temp/bat/" + i + ".bat", cmd + cmd2);
                     Process.Start(@"C:/Temp/bat/" + i + ".bat");
                     i++;
@@ -91,12 +94,13 @@ namespace WindowsFormsApp1
                     string filepath = "C:/Temp/fixed/fixed" + i + ".html";
                     string exportpath = "C:/Temp/pdf/" + filename.ToString("0000") + ".pdf";
                     string cmd = "C:\ncd C:/Program Files/wkhtmltopdf/bin";
-                    string cmd2 = "\nstart wkhtmltopdf.exe --page-width 195mm --page-height 275mm --margin-bottom 0 --margin-left 0 --margin-right 0 --margin-top 0 --disable-smart-shrinking " + filepath + " " + exportpath;
+                    string cmd2 = "\nstart wkhtmltopdf.exe --page-width 195mm --page-height 275mm --margin-bottom 0 --margin-left 0 --margin-right 0 --margin-top 0 --disable-smart-shrinking --viewport-size 1920x1080 " + filepath + " " + exportpath;
                     File.WriteAllText(@"C:/Temp/bat/" + i + ".bat", cmd + cmd2);
                     Process.Start(@"C:/Temp/bat/" + i + ".bat");
                     i++;
                     filename++;
                 }
+
             }
             }
 
@@ -116,9 +120,20 @@ namespace WindowsFormsApp1
             string SelectedBook = File.ReadAllText(@"C:/Temp/SelectedBook.txt");
             if (SelectedBook == "NA")
             {
-                foreach (var pdf in pdfs)
+                string[] pdfs1 = Directory.GetFiles(@"C:/Temp/pdf/", "*.pdf*", SearchOption.AllDirectories);
+                foreach (var pdf in pdfs1)
                 {
-                    
+                    string file = "C:\\testpdf.pdf";
+                    string oldchar = "testpdf.pdf";
+                    string repChar = "test.pdf";
+                    iTextSharp.text.pdf.PdfReader reader = new iTextSharp.text.pdf.PdfReader(file);
+                    PdfStamper stamper = new PdfStamper(reader, new FileStream(file.Replace(oldchar, repChar), FileMode.Create, FileAccess.Write));
+                    List<PdfCleanUpLocation> cleanUpLocations = new List<PdfCleanUpLocation>();
+                    cleanUpLocations.Add(new PdfCleanUpLocation(1, new iTextSharp.text.Rectangle(0f, 0f, 600f, 115f), iTextSharp.text.BaseColor.WHITE));
+                    PdfCleanUpProcessor cleaner = new PdfCleanUpProcessor(cleanUpLocations, stamper);
+                    cleaner.CleanUp();
+                    stamper.Close();
+                    reader.Close();
                 }
             }
 
@@ -127,11 +142,11 @@ namespace WindowsFormsApp1
             string[] pdfs = Directory.GetFiles(@"C:/Temp/pdf/", "*.pdf*", SearchOption.AllDirectories);
 
             string targetPath = @"C:/Temp/" + FileName + ".pdf";
-            using (var targetDoc = new PdfDocument())
+            using (var targetDoc = new PdfSharp.Pdf.PdfDocument())
             {
                 foreach (var pdf in pdfs)
                 {
-                    using (var pdfDoc = PdfReader.Open(pdf, PdfDocumentOpenMode.Import))
+                    using (var pdfDoc = PdfSharp.Pdf.IO.PdfReader.Open(pdf, PdfDocumentOpenMode.Import))
                     {
                         for (var y = 0; y < pdfDoc.PageCount; y++)
                             targetDoc.AddPage(pdfDoc.Pages[y]);
