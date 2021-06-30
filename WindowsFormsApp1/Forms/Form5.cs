@@ -120,20 +120,17 @@ namespace WindowsFormsApp1
             string SelectedBook = File.ReadAllText(@"C:/Temp/SelectedBook.txt");
             if (SelectedBook == "NA")
             {
-                string[] pdfs1 = Directory.GetFiles(@"C:/Temp/pdf/", "*.pdf*", SearchOption.AllDirectories);
-                foreach (var pdf in pdfs1)
+                int x = 0;
+                int FileName2 = 1;
+                while (x < FileCount + 1)
                 {
-                    string file = "C:\\testpdf.pdf";
-                    string oldchar = "testpdf.pdf";
-                    string repChar = "test.pdf";
-                    iTextSharp.text.pdf.PdfReader reader = new iTextSharp.text.pdf.PdfReader(file);
-                    PdfStamper stamper = new PdfStamper(reader, new FileStream(file.Replace(oldchar, repChar), FileMode.Create, FileAccess.Write));
-                    List<PdfCleanUpLocation> cleanUpLocations = new List<PdfCleanUpLocation>();
-                    cleanUpLocations.Add(new PdfCleanUpLocation(1, new iTextSharp.text.Rectangle(0f, 0f, 600f, 115f), iTextSharp.text.BaseColor.WHITE));
-                    PdfCleanUpProcessor cleaner = new PdfCleanUpProcessor(cleanUpLocations, stamper);
-                    cleaner.CleanUp();
-                    stamper.Close();
-                    reader.Close();
+                    string file = @"C:/Temp/pdf/" + FileName2.ToString("0000") + ".pdf";
+                    iTextSharp.text.pdf.PdfReader PDFReader = new iTextSharp.text.pdf.PdfReader(file);
+                    iTextSharp.text.Rectangle PageSize = PDFReader.GetCropBox(1);
+                    PageSize.GetLeft(0);
+                    PageSize.GetTop(0);
+                    x++;
+                    FileName2++;
                 }
             }
 
