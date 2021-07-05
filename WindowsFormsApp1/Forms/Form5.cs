@@ -11,6 +11,7 @@ using System.Runtime.InteropServices;
 using PdfSharp;
 using PdfSharp.Pdf;
 using PdfSharp.Pdf.IO;
+using PdfSharp.Drawing;
 
 namespace WindowsFormsApp1
 {
@@ -123,10 +124,11 @@ namespace WindowsFormsApp1
                 while (x < PdfCount + 1)
                 {
                     string file = @"C:/Temp/pdf/" + FileName2.ToString("0000") + ".pdf";
-
-
-                    
-
+                    PdfDocument document = PdfReader.Open(file);
+                    PdfPage page = document.Pages[0];
+                    page.CropBox = new PdfRectangle(new XPoint(0, 200),
+                                                    new XSize(300, 400));
+                    document.Save(file);
                     x++;
                     FileName2++;
                 }
