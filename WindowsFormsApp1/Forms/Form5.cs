@@ -78,7 +78,7 @@ namespace WindowsFormsApp1
                     string filepath = "C:/Temp/fixed/fixed" + i + ".html";
                     string exportpath = "C:/Temp/pdf/" + filename.ToString("0000") + ".pdf";
                     string cmd = "C:\ncd C:/Program Files/wkhtmltopdf/bin";
-                    string cmd2 = "\nstart wkhtmltopdf.exe --page-width 90mm --page-height 205mm --margin-bottom 0 --margin-left 0 --margin-right 0 --margin-top 0 --viewport-size 1920x1080 " + filepath + " " + exportpath;
+                    string cmd2 = "\nstart wkhtmltopdf.exe --page-width 90mm --page-height 200mm --margin-bottom 0 --margin-left 0 --margin-right 0 --margin-top 0 --viewport-size 1920x1080 " + filepath + " " + exportpath;
                     File.WriteAllText(@"C:/Temp/bat/" + i + ".bat", cmd + cmd2);
                     Process.Start(@"C:/Temp/bat/" + i + ".bat");
                     i++;
