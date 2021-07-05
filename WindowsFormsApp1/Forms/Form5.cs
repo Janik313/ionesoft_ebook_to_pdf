@@ -11,13 +11,10 @@ using System.Runtime.InteropServices;
 using PdfSharp;
 using PdfSharp.Pdf;
 using PdfSharp.Pdf.IO;
-using iTextSharp.text.pdf;
-using iTextSharp.text;
-using iTextSharp.xtra.iTextSharp.text.pdf.pdfcleanup;
 
 namespace WindowsFormsApp1
 {
-    public partial class Form5 : Form
+    public partial class Form5 : System.Windows.Forms.Form
     {
         public Form5()
         {
@@ -117,18 +114,19 @@ namespace WindowsFormsApp1
         private void button3_Click(object sender, EventArgs e)
         {
             int FileCount = Directory.GetFiles(@"C:/Temp/fixed/").Length;
+            int PdfCount = Directory.GetFiles(@"C:/Temp/pdf/").Length;
             string SelectedBook = File.ReadAllText(@"C:/Temp/SelectedBook.txt");
             if (SelectedBook == "NA")
             {
-                int x = 0;
+                int x = 1;
                 int FileName2 = 1;
-                while (x < FileCount + 1)
+                while (x < PdfCount + 1)
                 {
                     string file = @"C:/Temp/pdf/" + FileName2.ToString("0000") + ".pdf";
-                    iTextSharp.text.pdf.PdfReader PDFReader = new iTextSharp.text.pdf.PdfReader(file);
-                    iTextSharp.text.Rectangle PageSize = PDFReader.GetCropBox(1);
-                    PageSize.GetLeft(0);
-                    PageSize.GetTop(0);
+
+
+                    
+
                     x++;
                     FileName2++;
                 }
