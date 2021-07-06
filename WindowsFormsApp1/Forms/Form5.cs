@@ -25,82 +25,44 @@ namespace WindowsFormsApp1
         private void button1_Click(object sender, EventArgs e)
         {
 
-                string SelectedBook = File.ReadAllText(@"C:/Temp/SelectedBook.txt");
-                int FileCount = Directory.GetFiles(@"C:/Temp/fixed/").Length;
-                int i = 0;
-                int filename = 001;
+            string SelectedBook = File.ReadAllText(@"C:/Temp/SelectedBook.txt");
+            int FileCount = Directory.GetFiles(@"C:/Temp/fixed/").Length;
+            int i = 0;
+            int filename = 001;
+            string filepath = "C:/Temp/fixed/fixed" + i + ".html";
+            string exportpath = "C:/Temp/pdf/" + filename.ToString("0000") + ".pdf";
+            string cmd2 = "test";
+
             if (SelectedBook == "FM")
             {
-                while (i < FileCount + 1)
-                {
-                    string filepath = "C:/Temp/fixed/fixed" + i + ".html";
-                    string exportpath = "C:/Temp/pdf/" + filename.ToString("0000") + ".pdf";
-                    string cmd = "C:\ncd C:/Program Files/wkhtmltopdf/bin";
-                    string cmd2 = "\nstart wkhtmltopdf.exe --page-width 128mm --page-height 180mm --margin-bottom 0 --margin-left 0 --margin-right 0 --margin-top 0 --disable-smart-shrinking --viewport-size 1920x1080 " + filepath + " " + exportpath;
-                    File.WriteAllText(@"C:/Temp/bat/" + i + ".bat", cmd + cmd2);
-                    Process.Start(@"C:/Temp/bat/" + i + ".bat");
-                    i++;
-                    filename++;
-                }
+                cmd2 = "\nstart wkhtmltopdf.exe --page-width 128mm --page-height 180mm --margin-bottom 0 --margin-left 0 --margin-right 0 --margin-top 0 --disable-smart-shrinking --viewport-size 1920x1080 " + filepath + " " + exportpath;
             }
             else if (SelectedBook == "TD")
             {
-                while (i < FileCount + 1)
-                {
-                    string filepath = "C:/Temp/fixed/fixed" + i + ".html";
-                    string exportpath = "C:/Temp/pdf/" + filename.ToString("0000") + ".pdf";
-                    string cmd = "C:\ncd C:/Program Files/wkhtmltopdf/bin";
-                    string cmd2 = "\nstart wkhtmltopdf.exe --page-width 158mm --page-height 223mm --margin-bottom 0 --margin-left 0 --margin-right 0 --margin-top 0 --disable-smart-shrinking --viewport-size 1920x1080 " + filepath + " " + exportpath;
-                    File.WriteAllText(@"C:/Temp/bat/" + i + ".bat", cmd + cmd2);
-                    Process.Start(@"C:/Temp/bat/" + i + ".bat");
-                    i++;
-                    filename++;
-                }
+                cmd2 = "\nstart wkhtmltopdf.exe --page-width 158mm --page-height 223mm --margin-bottom 0 --margin-left 0 --margin-right 0 --margin-top 0 --disable-smart-shrinking --viewport-size 1920x1080 " + filepath + " " + exportpath;
             }
             else if (SelectedBook == "MW")
             {
-                while (i < FileCount + 1)
-                {
-                    string filepath = "C:/Temp/fixed/fixed" + i + ".html";
-                    string exportpath = "C:/Temp/pdf/" + filename.ToString("0000") + ".pdf";
-                    string cmd = "C:\ncd C:/Program Files/wkhtmltopdf/bin";
-                    string cmd2 = "\nstart wkhtmltopdf.exe --page-width 158mm --page-height 223mm --margin-bottom 0 --margin-left 0 --margin-right 0 --margin-top 0 --disable-smart-shrinking --viewport-size 1920x1080 " + filepath + " " + exportpath;
-                    File.WriteAllText(@"C:/Temp/bat/" + i + ".bat", cmd + cmd2);
-                    Process.Start(@"C:/Temp/bat/" + i + ".bat");
-                    i++;
-                    filename++;
-                }
+                cmd2 = "\nstart wkhtmltopdf.exe --page-width 158mm --page-height 223mm --margin-bottom 0 --margin-left 0 --margin-right 0 --margin-top 0 --disable-smart-shrinking --viewport-size 1920x1080 " + filepath + " " + exportpath;
             }
             else if (SelectedBook == "NA")
             {
-                while (i < FileCount + 1)
-                {
-                    string filepath = "C:/Temp/fixed/fixed" + i + ".html";
-                    string exportpath = "C:/Temp/pdf/" + filename.ToString("0000") + ".pdf";
-                    string cmd = "C:\ncd C:/Program Files/wkhtmltopdf/bin";
-                    string cmd2 = "\nstart wkhtmltopdf.exe --page-width 90mm --page-height 200mm --margin-bottom 0 --margin-left 0 --margin-right 0 --margin-top 0 --viewport-size 1920x1080 " + filepath + " " + exportpath;
-                    File.WriteAllText(@"C:/Temp/bat/" + i + ".bat", cmd + cmd2);
-                    Process.Start(@"C:/Temp/bat/" + i + ".bat");
-                    i++;
-                    filename++;
-                }
+                cmd2 = "\nstart wkhtmltopdf.exe --page-width 90mm --page-height 200mm --margin-bottom 0 --margin-left 0 --margin-right 0 --margin-top 0 --viewport-size 1920x1080 " + filepath + " " + exportpath;
             }
             else if (SelectedBook == "RM")
             {
-                while (i < FileCount + 1)
-                {
-                    string filepath = "C:/Temp/fixed/fixed" + i + ".html";
-                    string exportpath = "C:/Temp/pdf/" + filename.ToString("0000") + ".pdf";
-                    string cmd = "C:\ncd C:/Program Files/wkhtmltopdf/bin";
-                    string cmd2 = "\nstart wkhtmltopdf.exe --page-width 195mm --page-height 275mm --margin-bottom 0 --margin-left 0 --margin-right 0 --margin-top 0 --disable-smart-shrinking --viewport-size 1920x1080 " + filepath + " " + exportpath;
-                    File.WriteAllText(@"C:/Temp/bat/" + i + ".bat", cmd + cmd2);
-                    Process.Start(@"C:/Temp/bat/" + i + ".bat");
-                    i++;
-                    filename++;
-                }
+                cmd2 = "\nstart wkhtmltopdf.exe --page-width 195mm --page-height 275mm --margin-bottom 0 --margin-left 0 --margin-right 0 --margin-top 0 --disable-smart-shrinking --viewport-size 1920x1080 " + filepath + " " + exportpath;
+            }
+            while (i < FileCount + 1)
+            {
 
+                string cmd = "C:\ncd C:/Program Files/wkhtmltopdf/bin";
+                File.WriteAllText(@"C:/Temp/bat/" + i + ".bat", cmd + cmd2);
+                Process.Start(@"C:/Temp/bat/" + i + ".bat");
+                i++;
+                filename++;
             }
-            }
+        }
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -114,25 +76,37 @@ namespace WindowsFormsApp1
 
         private void button3_Click(object sender, EventArgs e)
         {
+            int XPoint1 = 0;
+            int XPoint2 = 0;
+            int XSize1 = 0;
+            int XSize2 = 0;
             int FileCount = Directory.GetFiles(@"C:/Temp/fixed/").Length;
             int PdfCount = Directory.GetFiles(@"C:/Temp/pdf/").Length;
             string SelectedBook = File.ReadAllText(@"C:/Temp/SelectedBook.txt");
             if (SelectedBook == "NA")
             {
-                int x = 1;
-                int FileName2 = 1;
-                while (x < PdfCount + 1)
-                {
-                    string file = @"C:/Temp/pdf/" + FileName2.ToString("0000") + ".pdf";
-                    PdfDocument document = PdfReader.Open(file);
-                    PdfPage page = document.Pages[0];
-                    page.CropBox = new PdfRectangle(new XPoint(0, 200),
-                                                    new XSize(300, 400));
-                    document.Save(file);
-                    x++;
-                    FileName2++;
-                }
+                XPoint1 = 0;
+                XPoint2 = 200;
+                XSize1 = 300;
+                XSize2 = 400;
+                
             }
+
+
+            int x = 1;
+            int FileName2 = 1;
+            while (x < PdfCount + 1)
+            {
+                string file = @"C:/Temp/pdf/" + FileName2.ToString("0000") + ".pdf";
+                PdfDocument document = PdfReader.Open(file);
+                PdfPage page = document.Pages[0];
+                page.CropBox = new PdfRectangle(new XPoint(XPoint1, XPoint2),
+                                                new XSize(XSize1, XSize2));
+                document.Save(file);
+                x++;
+                FileName2++;
+            }
+
 
 
             string FileName = File.ReadAllText(@"C:/Temp/SelectedBook.txt");

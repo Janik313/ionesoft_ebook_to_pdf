@@ -62,213 +62,84 @@ namespace WindowsFormsApp1
         private void button1_Click(object sender, EventArgs e)
         {
             string SelectedBook = File.ReadAllText(@"C:/Temp/SelectedBook.txt");
-
+            int urlnumb = 0;
+            int Book = 0;
 
             if (SelectedBook == "FM")
             {
                 int FM = 704;
-                int i = 0;
-                int urlnumb = 1;
-                string htmldefiner = "html";
+                int FM2 = 1;
 
-                while (i < FM)
-                {
-                    using var client = new WebClient();
-                    client.Headers.Add("User-Agent", "C# console program");
-
-                    string url = "http://localhost:7211/database/resource/pk/" + urlnumb;
-                    string content = client.DownloadString(url);
-
-                    if (content.Contains("Adobe Systems Incorporated"))
-                    {
-                        urlnumb++;
-                    }else if (content.Contains("http://www.monotype.com/html"))
-                    {
-                        urlnumb++;
-                    }
-                    else if (content.Contains("VeriSign Commercial Software Publishers"))
-                    {
-                        urlnumb++;
-                    }
-                    else if (content.Contains(htmldefiner))
-                    {
-                        string savedirectory = @"C:/Temp/original/" + i + ".html";
-                        System.IO.File.WriteAllText(savedirectory, content);
-                        i++;
-                        urlnumb++;
-                    }
-                    else
-                    {
-                        urlnumb++;
-                    }
-                }
-
-
+                Book = FM;
+                urlnumb = FM2;
 
             }
             if (SelectedBook == "TD")
             {
                 int TD = 259;
-                int i = 0;
-                int urlnumb = 14830;
-                string htmldefiner = "html";
+                int TD2 = 14830;
+                Book = TD;
+                urlnumb = TD2;
 
-                while (i < TD)
-                {
-                    using var client = new WebClient();
-                    client.Headers.Add("User-Agent", "C# console program");
-
-                    string url = "http://localhost:7211/database/resource/pk/" + urlnumb;
-                    string content = client.DownloadString(url);
-
-                    if (content.Contains("Adobe Systems Incorporated"))
-                    {
-                        urlnumb++;
-                    }
-                    else if (content.Contains("http://www.monotype.com/html"))
-                    {
-                        urlnumb++;
-                    }
-                    else if (content.Contains("VeriSign Commercial Software Publishers"))
-                    {
-                        urlnumb++;
-                    }else if(content.Contains("Adobe XMP Core"))
-                    {
-                        urlnumb++;
-                    }
-                    else if (content.Contains(htmldefiner))
-                    {
-                        string savedirectory = @"C:/Temp/original/" + i + ".html";
-                        System.IO.File.WriteAllText(savedirectory, content);
-                        i++;
-                        urlnumb++;
-                    }
-                    else
-                    {
-                        urlnumb++;
-                    }
-                }
             }
             if (SelectedBook == "RM")
             {
 
                 int RM = 340;
-                int i = 0;
-                int urlnumb = 11264;
-                string htmldefiner = "html";
+                int RM2 = 11264;
+                Book = RM;
+                urlnumb = RM2;
 
-                while (i < RM)
-                {
-                    using var client = new WebClient();
-                    client.Headers.Add("User-Agent", "C# console program");
-
-                    string url = "http://localhost:7211/database/resource/pk/" + urlnumb;
-                    string content = client.DownloadString(url);
-
-                    if (content.Contains("Adobe Systems Incorporated"))
-                    {
-                        urlnumb++;
-                    }
-                    else if (content.Contains("http://www.monotype.com/html"))
-                    {
-                        urlnumb++;
-                    }
-                    else if (content.Contains("VeriSign Commercial Software Publishers"))
-                    {
-                        urlnumb++;
-                    }
-                    else if (content.Contains(htmldefiner))
-                    {
-                        string savedirectory = @"C:/Temp/original/" + i + ".html";
-                        System.IO.File.WriteAllText(savedirectory, content);
-                        i++;
-                        urlnumb++;
-                    }
-                    else
-                    {
-                        urlnumb++;
-                    }
-                }
             }
             if (SelectedBook == "NA")
             {
 
                 int NA = 524;
-                int i = 0;
-                int urlnumb = 7491;
-                string htmldefiner = "html";
+                int NA2 = 7491;
 
-                while (i < NA)
-                {
-                    using var client = new WebClient();
-                    client.Headers.Add("User-Agent", "C# console program");
-
-                    string url = "http://localhost:7211/database/resource/pk/" + urlnumb;
-                    string content = client.DownloadString(url);
-
-                    if (content.Contains("Adobe Systems Incorporated"))
-                    {
-                        urlnumb++;
-                    }
-                    else if (content.Contains("http://www.monotype.com/html"))
-                    {
-                        urlnumb++;
-                    }
-                    else if (content.Contains("VeriSign Commercial Software Publishers"))
-                    {
-                        urlnumb++;
-                    }
-                    else if (content.Contains(htmldefiner))
-                    {
-                        string savedirectory = @"C:/Temp/original/" + i + ".html";
-                        System.IO.File.WriteAllText(savedirectory, content);
-                        i++;
-                        urlnumb++;
-                    }
-                    else
-                    {
-                        urlnumb++;
-                    }
-                }
+                Book = NA;
+                urlnumb = NA2;
             }
             if (SelectedBook == "MW")
             {
                 int MW = 373;
-                int i = 0;
-                int urlnumb = 4749;
-                string htmldefiner = "html";
+                int MW2 = 4749;
+                Book = MW;
+                urlnumb = MW2;
+                
+            }
+            int i = 0;
+            string htmldefiner = "html";
+            while (i < Book)
+            {
+                using var client = new WebClient();
+                client.Headers.Add("User-Agent", "C# console program");
 
-                while (i < MW)
+                string url = "http://localhost:7211/database/resource/pk/" + urlnumb;
+                string content = client.DownloadString(url);
+
+                if (content.Contains("Adobe Systems Incorporated"))
                 {
-                    using var client = new WebClient();
-                    client.Headers.Add("User-Agent", "C# console program");
-
-                    string url = "http://localhost:7211/database/resource/pk/" + urlnumb;
-                    string content = client.DownloadString(url);
-
-                    if (content.Contains("Adobe Systems Incorporated"))
-                    {
-                        urlnumb++;
-                    }
-                    else if (content.Contains("http://www.monotype.com/html"))
-                    {
-                        urlnumb++;
-                    }
-                    else if (content.Contains("VeriSign Commercial Software Publishers"))
-                    {
-                        urlnumb++;
-                    }
-                    else if (content.Contains(htmldefiner))
-                    {
-                        string savedirectory = @"C:/Temp/original/" + i + ".html";
-                        System.IO.File.WriteAllText(savedirectory, content);
-                        i++;
-                        urlnumb++;
-                    }
-                    else
-                    {
-                        urlnumb++;
-                    }
+                    urlnumb++;
+                }
+                else if (content.Contains("http://www.monotype.com/html"))
+                {
+                    urlnumb++;
+                }
+                else if (content.Contains("VeriSign Commercial Software Publishers"))
+                {
+                    urlnumb++;
+                }
+                else if (content.Contains(htmldefiner))
+                {
+                    string savedirectory = @"C:/Temp/original/" + i + ".html";
+                    System.IO.File.WriteAllText(savedirectory, content);
+                    i++;
+                    urlnumb++;
+                }
+                else
+                {
+                    urlnumb++;
                 }
             }
         }
