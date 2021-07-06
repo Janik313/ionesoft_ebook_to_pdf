@@ -99,8 +99,8 @@ namespace WindowsFormsApp1
             else if (SelectedBook == "RM")
             {
                 XPoint1 = 0;
-                XPoint2 = 200;
-                XSize1 = 300;
+                XPoint2 = 800;
+                XSize1 = 100;
                 XSize2 = 400;
             }
 
