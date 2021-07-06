@@ -144,7 +144,7 @@ namespace WindowsFormsApp1
                 i++;
             }
 
-            MessageBox.Show("Der Vorgang ist abgeschlossen, du kannst nun vortfahren.", "Download Abgeschlossen", MessageBoxButtons.OK);
+            MessageBox.Show("Der Download ist abgeschlossen, du kannst nun vortfahren.", "Download Abgeschlossen", MessageBoxButtons.OK);
         }
 
         private void button3_Click(object sender, EventArgs e)

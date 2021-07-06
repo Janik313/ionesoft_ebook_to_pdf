@@ -31,32 +31,39 @@ namespace WindowsFormsApp1
             int filename = 001;
             string filepath = "C:/Temp/fixed/fixed" + i + ".html";
             string exportpath = "C:/Temp/pdf/" + filename.ToString("0000") + ".pdf";
-            string cmd2 = "test";
+            int pageHeight = 0;
+            int pageWidth = 0;
 
             if (SelectedBook == "FM")
             {
-                cmd2 = "\nstart wkhtmltopdf.exe --page-width 128mm --page-height 180mm --margin-bottom 0 --margin-left 0 --margin-right 0 --margin-top 0 --disable-smart-shrinking --viewport-size 1920x1080 " + filepath + " " + exportpath;
+                pageWidth = 128;
+                pageHeight = 180;
             }
             else if (SelectedBook == "TD")
             {
-                cmd2 = "\nstart wkhtmltopdf.exe --page-width 158mm --page-height 223mm --margin-bottom 0 --margin-left 0 --margin-right 0 --margin-top 0 --disable-smart-shrinking --viewport-size 1920x1080 " + filepath + " " + exportpath;
+                pageWidth = 158;
+                pageHeight = 223;
             }
             else if (SelectedBook == "MW")
             {
-                cmd2 = "\nstart wkhtmltopdf.exe --page-width 158mm --page-height 223mm --margin-bottom 0 --margin-left 0 --margin-right 0 --margin-top 0 --disable-smart-shrinking --viewport-size 1920x1080 " + filepath + " " + exportpath;
+                pageWidth = 158;
+                pageHeight = 223;
             }
             else if (SelectedBook == "NA")
             {
-                cmd2 = "\nstart wkhtmltopdf.exe --page-width 90mm --page-height 200mm --margin-bottom 0 --margin-left 0 --margin-right 0 --margin-top 0 --viewport-size 1920x1080 " + filepath + " " + exportpath;
+                pageWidth = 90;
+                pageHeight = 200;
             }
             else if (SelectedBook == "RM")
             {
-                cmd2 = "\nstart wkhtmltopdf.exe --page-width 195mm --page-height 275mm --margin-bottom 0 --margin-left 0 --margin-right 0 --margin-top 0 --disable-smart-shrinking --viewport-size 1920x1080 " + filepath + " " + exportpath;
+                pageWidth = 195;
+                pageHeight = 275;
             }
             while (i < FileCount + 1)
             {
 
                 string cmd = "C:\ncd C:/Program Files/wkhtmltopdf/bin";
+                string cmd2 = "\nstart wkhtmltopdf.exe --page-width " + pageWidth + "mm --page-height " + pageHeight +"mm --margin-bottom 0 --margin-left 0 --margin-right 0 --margin-top 0 --disable-smart-shrinking --viewport-size 1920x1080 " + filepath + " " + exportpath;
                 File.WriteAllText(@"C:/Temp/bat/" + i + ".bat", cmd + cmd2);
                 Process.Start(@"C:/Temp/bat/" + i + ".bat");
                 i++;
@@ -68,9 +75,8 @@ namespace WindowsFormsApp1
             int XPoint2 = 0;
             int XSize1 = 0;
             int XSize2 = 0;
-            int FileCount = Directory.GetFiles(@"C:/Temp/fixed/").Length;
             int PdfCount = Directory.GetFiles(@"C:/Temp/pdf/").Length;
-            string SelectedBook = File.ReadAllText(@"C:/Temp/SelectedBook.txt");
+
             if (SelectedBook == "NA")
             {
                 XPoint1 = 0;
@@ -114,7 +120,7 @@ namespace WindowsFormsApp1
                 targetDoc.Save(targetPath);
             }
             Process.Start(@"C:/Temp/" + FileName + ".pdf");
-            MessageBox.Show("Der Vorgang ist abgeschlossen, du kannst nun vortfahren.", "Umwandlung Abgeschlossen", MessageBoxButtons.OK);
+            MessageBox.Show("Die Umwandlung ist abgeschlossen, du kannst nun vortfahren.", "Umwandlung Abgeschlossen", MessageBoxButtons.OK);
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -127,10 +133,6 @@ namespace WindowsFormsApp1
             System.Windows.Forms.Application.ExitThread();
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            
-        }
     }
 
 }
