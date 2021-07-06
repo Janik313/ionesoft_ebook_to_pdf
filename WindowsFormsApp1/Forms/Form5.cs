@@ -28,9 +28,7 @@ namespace WindowsFormsApp1
             string SelectedBook = File.ReadAllText(@"C:/Temp/SelectedBook.txt");
             int FileCount = Directory.GetFiles(@"C:/Temp/fixed/").Length;
             int i = 0;
-            int filename = 1;
-            string filepath = "C:/Temp/fixed/fixed" + i + ".html";
-            string exportpath = "C:/Temp/pdf/" + filename.ToString("0000") + ".pdf";
+            int filename = 001;
             int pageHeight = 0;
             int pageWidth = 0;
 
@@ -52,16 +50,19 @@ namespace WindowsFormsApp1
             else if (SelectedBook == "NA")
             {
                 pageWidth = 90;
-                pageHeight = 200;
+                pageHeight = 300;
             }
             else if (SelectedBook == "RM")
             {
-                pageWidth = 195;
-                pageHeight = 275;
+                pageWidth = 600;
+                pageHeight = 1000;
             }
 
             while (i < FileCount + 1)
             {
+
+                string filepath = "C:/Temp/fixed/fixed" + i + ".html";
+                string exportpath = "C:/Temp/pdf/" + filename.ToString("0000") + ".pdf";
                 string cmd = "C:\ncd C:/Program Files/wkhtmltopdf/bin";
                 string cmd2 = "\nstart wkhtmltopdf.exe --page-width " + pageWidth + "mm --page-height " + pageHeight + "mm --margin-bottom 0 --margin-left 0 --margin-right 0 --margin-top 0 --disable-smart-shrinking --viewport-size 1920x1080 " + filepath + " " + exportpath;
                 File.WriteAllText(@"C:/Temp/bat/" + i + ".bat", cmd + cmd2);
@@ -70,75 +71,74 @@ namespace WindowsFormsApp1
                 filename++;
             }
 
-                
-                
 
-            int xyz = 0;
 
-            while (xyz < 1)
+
+            int PDFCount = Directory.GetFiles(@"C:/Temp/pdf/").Length;
+
+
+            while (PDFCount != FileCount)
             {
-                if (Process.GetProcessesByName("wkhtmltopdf.exe").Length > 0)
-                {
-                    System.Threading.Thread.Sleep(5000);
-                }
-                else
-                {
-                    int XPoint1 = 0;
-                    int XPoint2 = 0;
-                    int XSize1 = 0;
-                    int XSize2 = 0;
-                    int PdfCount = Directory.GetFiles(@"C:/Temp/pdf/").Length;
-
-                    if (SelectedBook == "NA")
-                    {
-                        XPoint1 = 0;
-                        XPoint2 = 200;
-                        XSize1 = 300;
-                        XSize2 = 400;
-
-                    }
-
-
-                    int x = 1;
-                    int FileName2 = 1;
-                    while (x < PdfCount + 1)
-                    {
-                        string file = @"C:/Temp/pdf/" + FileName2.ToString("0000") + ".pdf";
-                        PdfDocument document = PdfReader.Open(file);
-                        PdfPage page = document.Pages[0];
-                        page.CropBox = new PdfRectangle(new XPoint(XPoint1, XPoint2),
-                                                        new XSize(XSize1, XSize2));
-                        document.Save(file);
-                        x++;
-                        FileName2++;
-                    }
-
-
-
-                    string FileName = File.ReadAllText(@"C:/Temp/SelectedBook.txt");
-                    string[] pdfs = Directory.GetFiles(@"C:/Temp/pdf/", "*.pdf*", SearchOption.AllDirectories);
-
-                    string targetPath = @"C:/Temp/" + FileName + ".pdf";
-                    using (var targetDoc = new PdfSharp.Pdf.PdfDocument())
-                    {
-                        foreach (var pdf in pdfs)
-                        {
-                            using (var pdfDoc = PdfSharp.Pdf.IO.PdfReader.Open(pdf, PdfDocumentOpenMode.Import))
-                            {
-                                for (var y = 0; y < pdfDoc.PageCount; y++)
-                                    targetDoc.AddPage(pdfDoc.Pages[y]);
-                            }
-                        }
-                        targetDoc.Save(targetPath);
-                    }
-                    Process.Start(@"C:/Temp/" + FileName + ".pdf");
-                    MessageBox.Show("Die Umwandlung ist abgeschlossen, du kannst nun vortfahren.", "Umwandlung Abgeschlossen", MessageBoxButtons.OK);
-                    xyz++;
-                }
+                System.Threading.Thread.Sleep(5000);
+                PDFCount = Directory.GetFiles(@"C:/Temp/pdf/").Length;
             }
-            
+
+            int XPoint1 = 0;
+            int XPoint2 = 0;
+            int XSize1 = 0;
+            int XSize2 = 0;
+            int PdfCount = Directory.GetFiles(@"C:/Temp/pdf/").Length;
+
+            if (SelectedBook == "NA")
+            {
+                XPoint1 = 0;
+                XPoint2 = 200;
+                XSize1 = 1000;
+                XSize2 = 200;
+            }
+            else if (SelectedBook == "RM")
+            {
+                XPoint1 = 0;
+                XPoint2 = 200;
+                XSize1 = 300;
+                XSize2 = 400;
+            }
 
 
+            int x = 1;
+            int FileName2 = 1;
+            while (x < PdfCount + 1)
+            {
+                string file = @"C:/Temp/pdf/" + FileName2.ToString("0000") + ".pdf";
+                PdfDocument document = PdfReader.Open(file);
+                PdfPage page = document.Pages[0];
+                page.CropBox = new PdfRectangle(new XPoint(XPoint1, XPoint2),
+                                                new XSize(XSize1, XSize2));
+                document.Save(file);
+                x++;
+                FileName2++;
+            }
+
+
+
+            string FileName = File.ReadAllText(@"C:/Temp/SelectedBook.txt");
+            string[] pdfs = Directory.GetFiles(@"C:/Temp/pdf/", "*.pdf*", SearchOption.AllDirectories);
+
+            string targetPath = @"C:/Temp/" + FileName + ".pdf";
+            using (var targetDoc = new PdfSharp.Pdf.PdfDocument())
+            {
+                foreach (var pdf in pdfs)
+                {
+                    using (var pdfDoc = PdfSharp.Pdf.IO.PdfReader.Open(pdf, PdfDocumentOpenMode.Import))
+                    {
+                        for (var y = 0; y < pdfDoc.PageCount; y++)
+                            targetDoc.AddPage(pdfDoc.Pages[y]);
+                    }
+                }
+                targetDoc.Save(targetPath);
+            }
+            Process.Start(@"C:/Temp/" + FileName + ".pdf");
+            MessageBox.Show("Die Umwandlung ist abgeschlossen, du kannst nun fortfahren.", "Umwandlung Abgeschlossen", MessageBoxButtons.OK);
             
         }
 

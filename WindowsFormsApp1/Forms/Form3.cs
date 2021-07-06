@@ -135,6 +135,7 @@ namespace WindowsFormsApp1
                 text = text.Replace("Ã©", "é");
                 text = text.Replace("â€™", "’");
                 text = text.Replace("Î±", "α");
+                text = text.Replace("ï¬", "f");
                 text = text.Replace(@"<img class=""_idGenObjectAttribute-1 _idGenObjectAttribute-2"" src=""http://localhost:7211/database/resource/pk/564"" data-original=""image/Kap1rechts.png"" alt="""" />", "");
 
 
@@ -144,7 +145,7 @@ namespace WindowsFormsApp1
                 i++;
             }
 
-            MessageBox.Show("Der Download ist abgeschlossen, du kannst nun vortfahren.", "Download Abgeschlossen", MessageBoxButtons.OK);
+            MessageBox.Show("Der Download ist abgeschlossen, du kannst nun fortfahren.", "Download Abgeschlossen", MessageBoxButtons.OK);
         }
 
         private void button3_Click(object sender, EventArgs e)
