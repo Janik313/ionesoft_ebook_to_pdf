@@ -26,37 +26,7 @@ namespace WindowsFormsApp1
 
         private void button2_Click(object sender, EventArgs e)
         {
-            string SelectedBook = File.ReadAllText(@"C:/Temp/SelectedBook.txt");
-            int FileCount = Directory.GetFiles(@"C:/Temp/original/").Length;
-            int i = 0;
-
-            while (i < FileCount)
-            {
-                    string text = File.ReadAllText(@"C:/Temp/original/" + i + ".html");
-                    text = text.Replace("localhost/", "localhost:7211/");
-                    text = text.Replace("Ã¼", "ü");
-                    text = text.Replace("Ã¤", "ä");
-                    text = text.Replace("Ã¶", "ö");
-                    text = text.Replace("Ãœ", "Ü");
-                    text = text.Replace("ÃŸ", "ß");
-                    text = text.Replace("â€¢", "•");
-                    text = text.Replace("â€¦", "...");
-                    text = text.Replace("â€ž", "„");
-                    text = text.Replace("â€œ", "“");
-                    text = text.Replace("Â", "");
-                    text = text.Replace("â€“", "-");
-                    text = text.Replace("Ã—", "×");
-                    text = text.Replace("Ã©", "é");
-                    text = text.Replace("â€™", "’");
-                    text = text.Replace("Î±", "α");
-                    text = text.Replace(@"<img class=""_idGenObjectAttribute-1 _idGenObjectAttribute-2"" src=""http://localhost:7211/database/resource/pk/564"" data-original=""image/Kap1rechts.png"" alt="""" />", "");
-
-
-                    //text = text.Replace("", "Ö");
-                    //text = text.Replace("", "Ä");
-                    File.WriteAllText("C:/Temp/fixed/fixed" + i + ".html", text);
-                    i++;
-            }
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -142,6 +112,39 @@ namespace WindowsFormsApp1
                     urlnumb++;
                 }
             }
+            
+            int FileCount = Directory.GetFiles(@"C:/Temp/original/").Length;
+            i = 0;
+
+            while (i < FileCount)
+            {
+                string text = File.ReadAllText(@"C:/Temp/original/" + i + ".html");
+                text = text.Replace("localhost/", "localhost:7211/");
+                text = text.Replace("Ã¼", "ü");
+                text = text.Replace("Ã¤", "ä");
+                text = text.Replace("Ã¶", "ö");
+                text = text.Replace("Ãœ", "Ü");
+                text = text.Replace("ÃŸ", "ß");
+                text = text.Replace("â€¢", "•");
+                text = text.Replace("â€¦", "...");
+                text = text.Replace("â€ž", "„");
+                text = text.Replace("â€œ", "“");
+                text = text.Replace("Â", "");
+                text = text.Replace("â€“", "-");
+                text = text.Replace("Ã—", "×");
+                text = text.Replace("Ã©", "é");
+                text = text.Replace("â€™", "’");
+                text = text.Replace("Î±", "α");
+                text = text.Replace(@"<img class=""_idGenObjectAttribute-1 _idGenObjectAttribute-2"" src=""http://localhost:7211/database/resource/pk/564"" data-original=""image/Kap1rechts.png"" alt="""" />", "");
+
+
+                //text = text.Replace("", "Ö");
+                //text = text.Replace("", "Ä");
+                File.WriteAllText("C:/Temp/fixed/fixed" + i + ".html", text);
+                i++;
+            }
+
+            MessageBox.Show("Der Vorgang ist abgeschlossen, du kannst nun vortfahren.", "Download Abgeschlossen", MessageBoxButtons.OK);
         }
 
         private void button3_Click(object sender, EventArgs e)

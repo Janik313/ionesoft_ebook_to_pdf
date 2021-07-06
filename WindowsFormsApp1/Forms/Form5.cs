@@ -62,20 +62,8 @@ namespace WindowsFormsApp1
                 i++;
                 filename++;
             }
-        }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            System.IO.Directory.Delete("C:/Temp/bat", true);
-            System.IO.Directory.Delete("C:/Temp/fixed", true);
-            System.IO.Directory.Delete("C:/Temp/original", true);
-            System.IO.Directory.Delete("C:/Temp/pdf", true);
-            System.Windows.Forms.Application.ExitThread();
-        }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
             int XPoint1 = 0;
             int XPoint2 = 0;
             int XSize1 = 0;
@@ -89,7 +77,7 @@ namespace WindowsFormsApp1
                 XPoint2 = 200;
                 XSize1 = 300;
                 XSize2 = 400;
-                
+
             }
 
 
@@ -126,6 +114,22 @@ namespace WindowsFormsApp1
                 targetDoc.Save(targetPath);
             }
             Process.Start(@"C:/Temp/" + FileName + ".pdf");
+            MessageBox.Show("Der Vorgang ist abgeschlossen, du kannst nun vortfahren.", "Umwandlung Abgeschlossen", MessageBoxButtons.OK);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            System.IO.Directory.Delete("C:/Temp/bat", true);
+            System.IO.Directory.Delete("C:/Temp/fixed", true);
+            System.IO.Directory.Delete("C:/Temp/original", true);
+            System.IO.Directory.Delete("C:/Temp/pdf", true);
+            System.Windows.Forms.Application.ExitThread();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 
