@@ -29,10 +29,10 @@ namespace WindowsFormsApp1
             int FileCount = Directory.GetFiles(@"C:/Temp/fixed/").Length;
             int i = 0;
             int filename = 001;
-            int pageHeight = 0;
-            int pageWidth = 0;
+            int pageHeight = 5000;
+            int pageWidth = 5000;
 
-            if (SelectedBook == "FM")
+           /* if (SelectedBook == "FM")
             {
                 pageWidth = 128;
                 pageHeight = 180;
@@ -49,14 +49,17 @@ namespace WindowsFormsApp1
             }
             else if (SelectedBook == "NA")
             {
-                pageWidth = 90;
-                pageHeight = 300;
+                pageWidth = 5000;
+                pageHeight = 5000;
             }
             else if (SelectedBook == "RM")
             {
                 pageWidth = 600;
                 pageHeight = 1000;
             }
+           */
+
+            //i = FileCount + 1;      //Fürs Testen der Crop funktion
 
             while (i < FileCount + 1)
             {
@@ -71,7 +74,10 @@ namespace WindowsFormsApp1
                 filename++;
             }
 
-
+            /*
+             1mm = 2.8346456693point
+             1px = 0.75point          
+             */
 
 
             int PDFCount = Directory.GetFiles(@"C:/Temp/pdf/").Length;
@@ -83,25 +89,24 @@ namespace WindowsFormsApp1
                 PDFCount = Directory.GetFiles(@"C:/Temp/pdf/").Length;
             }
 
+            //Beide XPoints sollten stimmen
             int XPoint1 = 0;
-            int XPoint2 = 0;
+            int XPoint2 = 14173;
             int XSize1 = 0;
             int XSize2 = 0;
             int PdfCount = Directory.GetFiles(@"C:/Temp/pdf/").Length;
 
             if (SelectedBook == "NA")
             {
-                XPoint1 = 0;
-                XPoint2 = 200;
-                XSize1 = 1000;
-                XSize2 = 200;
+                XSize1 = 329;
+                XSize2 = 447;
+                XPoint2 = XPoint2 - XSize2;
             }
             else if (SelectedBook == "RM")
             {
-                XPoint1 = 0;
-                XPoint2 = 800;
                 XSize1 = 100;
                 XSize2 = 400;
+                XPoint2 = XPoint2 - XSize2;
             }
 
 
