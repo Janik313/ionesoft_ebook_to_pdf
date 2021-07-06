@@ -79,7 +79,7 @@ namespace WindowsFormsApp1
                 
             }
             int i = 0;
-            string htmldefiner = "html";
+            string htmldefiner = "<!DOCTYPE html>";
             while (i < Book)
             {
                 using var client = new WebClient();
