@@ -99,6 +99,9 @@ namespace WindowsFormsApp1
                 else if (content.Contains("VeriSign Commercial Software Publishers"))
                 {
                     urlnumb++;
+                }else if (content.Contains("@font-face"))
+                {
+                    urlnumb++
                 }
                 else if (content.Contains(htmldefiner))
                 {
