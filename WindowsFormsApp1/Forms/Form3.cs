@@ -78,6 +78,13 @@ namespace WindowsFormsApp1
                 urlnumb = MW2;
                 
             }
+            if (SelectedBook == "CUSTOM")
+            {
+                string[] lines = File.ReadAllLines(@"C:/Temp/custom/custom.txt");
+
+                int Sites = Int16.Parse(lines[1]);
+                int Start = Int16.Parse(lines[2]);
+            }
             int i = 0;
             string htmldefiner = "</body>";
             while (i < Book)

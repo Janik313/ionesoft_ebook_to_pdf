@@ -119,6 +119,23 @@ namespace WindowsFormsApp1
             {
                 XSize1 = 446;
                 XSize2 = 631;
+            }else if(SelectedBook == "CUSTOM")
+            {
+                string[] lines = File.ReadAllLines(@"C:/Temp/custom/custom.txt");
+
+
+                int width = Int16.Parse(lines[3]);
+                int height = Int16.Parse(lines[4]);
+                if (lines[0] == "mm")
+                {
+                    XSize1 = Convert.ToInt32(width * 2.8346456693);
+                    XSize2 = Convert.ToInt32(height * 2.8346456693);
+                }
+                else if(lines[0] == "px")
+                {
+                    XSize1 = Convert.ToInt32(width * 0.75);
+                    XSize2 = Convert.ToInt32(height * 0.75);
+                }
             }
 
 

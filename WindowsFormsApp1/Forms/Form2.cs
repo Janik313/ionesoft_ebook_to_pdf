@@ -63,5 +63,14 @@ namespace WindowsFormsApp1
             fm.Show();
             this.Hide();
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            System.IO.Directory.CreateDirectory("C:/Temp/custom");
+            File.WriteAllText(@"C:/Temp/SelectedBook.txt", "CUSTOM");
+            WindowsFormsApp1.Forms.Custom fm2 = new Forms.Custom();
+            fm2.Show();
+            this.Hide();
+        }
     }
 }
