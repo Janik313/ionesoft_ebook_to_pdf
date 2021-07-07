@@ -84,43 +84,54 @@ namespace WindowsFormsApp1
 
                 int Sites = Int16.Parse(lines[1]);
                 int Start = Int16.Parse(lines[2]);
+
+                Book = Sites;
+                urlnumb = Start;
             }
             int i = 0;
             string htmldefiner = "</body>";
-            while (i < Book)
+            try
             {
-                using var client = new WebClient();
-                client.Headers.Add("User-Agent", "C# console program");
+                while (i < Book)
+                {
+                    using var client = new WebClient();
+                    client.Headers.Add("User-Agent", "C# console program");
 
-                string url = "http://localhost:7211/database/resource/pk/" + urlnumb;
-                string content = client.DownloadString(url);
+                    string url = "http://localhost:7211/database/resource/pk/" + urlnumb;
+                    string content = client.DownloadString(url);
 
-                if (content.Contains("Adobe Systems Incorporated"))
-                {
-                    urlnumb++;
+                    if (content.Contains("Adobe Systems Incorporated"))
+                    {
+                        urlnumb++;
+                    }
+                    else if (content.Contains("http://www.monotype.com/html"))
+                    {
+                        urlnumb++;
+                    }
+                    else if (content.Contains("VeriSign Commercial Software Publishers"))
+                    {
+                        urlnumb++;
+                    }
+                    else if (content.Contains("@font-face"))
+                    {
+                        urlnumb++;
+                    }
+                    else if (content.Contains(htmldefiner))
+                    {
+                        string savedirectory = @"C:/Temp/original/" + i + ".html";
+                        System.IO.File.WriteAllText(savedirectory, content);
+                        i++;
+                        urlnumb++;
+                    }
+                    else
+                    {
+                        urlnumb++;
+                    }
                 }
-                else if (content.Contains("http://www.monotype.com/html"))
-                {
-                    urlnumb++;
-                }
-                else if (content.Contains("VeriSign Commercial Software Publishers"))
-                {
-                    urlnumb++;
-                }else if (content.Contains("@font-face"))
-                {
-                    urlnumb++;
-                }
-                else if (content.Contains(htmldefiner))
-                {
-                    string savedirectory = @"C:/Temp/original/" + i + ".html";
-                    System.IO.File.WriteAllText(savedirectory, content);
-                    i++;
-                    urlnumb++;
-                }
-                else
-                {
-                    urlnumb++;
-                }
+            }
+            catch
+            {
+                MessageBox.Show("Beim herunterladen des Buches ist ein Fehler eingetreten. Das bedeutet, dass das Endergebniss vielleicht nicht perfekt sein wird.", "Error", MessageBoxButtons.OK);
             }
             
             int FileCount = Directory.GetFiles(@"C:/Temp/original/").Length;
@@ -146,6 +157,8 @@ namespace WindowsFormsApp1
                 text = text.Replace("â€™", "’");
                 text = text.Replace("Î±", "α");
                 text = text.Replace("ï¬", "f");
+                text = text.Replace(@"width=""100%""", @"width=""1000%""");
+                text = text.Replace(@"align=""left""", @"align=""right""");
                 text = text.Replace(@"<img class=""_idGenObjectAttribute-1 _idGenObjectAttribute-2"" src=""http://localhost:7211/database/resource/pk/564"" data-original=""image/Kap1rechts.png"" alt="""" />", "");
 
 

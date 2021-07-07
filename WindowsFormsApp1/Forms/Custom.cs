@@ -43,6 +43,10 @@ namespace WindowsFormsApp1.Forms
             unit, SiteCount.ToString(), StartPoint.ToString(), width.ToString(), height.ToString()
         };
             File.WriteAllLines(path + "custom.txt", lines);
+
+            WindowsFormsApp1.Form3 fm2 = new Form3();
+            fm2.Show();
+            this.Hide();
         }
 
         private void button4_Click(object sender, EventArgs e)
