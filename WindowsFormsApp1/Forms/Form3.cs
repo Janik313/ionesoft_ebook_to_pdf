@@ -46,7 +46,7 @@ namespace WindowsFormsApp1
             }
             if (SelectedBook == "TD")
             {
-                int TD = 259;
+                int TD = 260;
                 int TD2 = 14830;
                 Book = TD;
                 urlnumb = TD2;
@@ -55,7 +55,7 @@ namespace WindowsFormsApp1
             if (SelectedBook == "RM")
             {
 
-                int RM = 340;
+                int RM = 333;
                 int RM2 = 11264;
                 Book = RM;
                 urlnumb = RM2;
@@ -64,7 +64,7 @@ namespace WindowsFormsApp1
             if (SelectedBook == "NA")
             {
 
-                int NA = 524;
+                int NA = 532;
                 int NA2 = 7491;
 
                 Book = NA;
@@ -72,14 +72,14 @@ namespace WindowsFormsApp1
             }
             if (SelectedBook == "MW")
             {
-                int MW = 373;
+                int MW = 366;
                 int MW2 = 4749;
                 Book = MW;
                 urlnumb = MW2;
                 
             }
             int i = 0;
-            string htmldefiner = "<!DOCTYPE html>";
+            string htmldefiner = "</body>";
             while (i < Book)
             {
                 using var client = new WebClient();
@@ -101,7 +101,7 @@ namespace WindowsFormsApp1
                     urlnumb++;
                 }else if (content.Contains("@font-face"))
                 {
-                    urlnumb++
+                    urlnumb++;
                 }
                 else if (content.Contains(htmldefiner))
                 {

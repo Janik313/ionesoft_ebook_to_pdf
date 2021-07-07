@@ -90,6 +90,8 @@ namespace WindowsFormsApp1
             }
 
             //Beide XPoints sollten stimmen
+            //XSize1 = width
+            //XSize2 = height
             int XPoint1 = 0;
             int XPoint2 = 14173;
             int XSize1 = 0;
@@ -100,16 +102,28 @@ namespace WindowsFormsApp1
             {
                 XSize1 = 329;
                 XSize2 = 447;
-                XPoint2 = XPoint2 - XSize2;
             }
             else if (SelectedBook == "RM")
             {
                 XSize1 = 100;
                 XSize2 = 400;
-                XPoint2 = XPoint2 - XSize2;
+            }else if(SelectedBook == "FM")
+            {
+                XSize1 = 361;
+                XSize2 = 510;
+            }else if(SelectedBook == "MW")
+            {
+                XSize1 = 446;
+                XSize2 = 631;
+            }else if(SelectedBook == "TD")
+            {
+                XSize1 = 446;
+                XSize2 = 631;
             }
 
 
+
+            XPoint2 = XPoint2 - XSize2;
             int x = 1;
             int FileName2 = 1;
             while (x < PdfCount + 1)
