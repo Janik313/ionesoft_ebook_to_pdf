@@ -88,8 +88,18 @@ namespace WindowsFormsApp1
                 Book = Sites;
                 urlnumb = Start;
             }
+
+
+
+            progressBar1.Maximum = Book * 2;
+            progressBar1.Minimum = 1;
+            progressBar1.Visible = true;
+            progressBar1.Step = 1;
+
+
+
             int i = 0;
-            string htmldefiner = "</body>";
+            string htmldefiner = "html";
             try
             {
                 while (i < Book)
@@ -112,16 +122,13 @@ namespace WindowsFormsApp1
                     {
                         urlnumb++;
                     }
-                    else if (content.Contains("@font-face"))
-                    {
-                        urlnumb++;
-                    }
                     else if (content.Contains(htmldefiner))
                     {
                         string savedirectory = @"C:/Temp/original/" + i + ".html";
                         System.IO.File.WriteAllText(savedirectory, content);
                         i++;
                         urlnumb++;
+                        progressBar1.PerformStep();
                     }
                     else
                     {
@@ -166,6 +173,7 @@ namespace WindowsFormsApp1
                 //text = text.Replace("", "Ä");
                 File.WriteAllText("C:/Temp/fixed/fixed" + i + ".html", text);
                 i++;
+                progressBar1.PerformStep();
             }
 
             MessageBox.Show("Der Download ist abgeschlossen, du kannst nun fortfahren.", "Download Abgeschlossen", MessageBoxButtons.OK);
@@ -176,6 +184,63 @@ namespace WindowsFormsApp1
             Form4 fm = new Form4();
             fm.Show();
             this.Hide();
+        }
+
+        private void progressBar1_Click(object sender, EventArgs e)
+        {
+            string SelectedBook = File.ReadAllText(@"C:/Temp/SelectedBook.txt");
+            int urlnumb = 0;
+            int Book = 0;
+
+            if (SelectedBook == "FM")
+            {
+                int FM = 704;
+                int FM2 = 1;
+
+                Book = FM;
+                urlnumb = FM2;
+
+            }
+            if (SelectedBook == "TD")
+            {
+                int TD = 260;
+                int TD2 = 14830;
+                Book = TD;
+                urlnumb = TD2;
+
+            }
+            if (SelectedBook == "RM")
+            {
+
+                int RM = 333;
+                int RM2 = 11264;
+                Book = RM;
+                urlnumb = RM2;
+
+            }
+            if (SelectedBook == "NA")
+            {
+
+                int NA = 532;
+                int NA2 = 7491;
+
+                Book = NA;
+                urlnumb = NA2;
+            }
+            if (SelectedBook == "MW")
+            {
+                int MW = 366;
+                int MW2 = 4749;
+                Book = MW;
+                urlnumb = MW2;
+
+            }
+            progressBar1.Maximum = Book * 2;
+            progressBar1.Minimum = 1;
+            progressBar1.Visible = true;
+            progressBar1.Step = 1;
+
+
         }
     }
 }

@@ -12,6 +12,7 @@ using PdfSharp;
 using PdfSharp.Pdf;
 using PdfSharp.Pdf.IO;
 using PdfSharp.Drawing;
+using NReco;
 
 namespace WindowsFormsApp1
 {
@@ -29,65 +30,35 @@ namespace WindowsFormsApp1
             int FileCount = Directory.GetFiles(@"C:/Temp/fixed/").Length;
             int i = 0;
             int filename = 001;
-            int pageHeight = 5000;
-            int pageWidth = 5000;
 
-           /* if (SelectedBook == "FM")
-            {
-                pageWidth = 128;
-                pageHeight = 180;
-            }
-            else if (SelectedBook == "TD")
-            {
-                pageWidth = 158;
-                pageHeight = 223;
-            }
-            else if (SelectedBook == "MW")
-            {
-                pageWidth = 158;
-                pageHeight = 223;
-            }
-            else if (SelectedBook == "NA")
-            {
-                pageWidth = 5000;
-                pageHeight = 5000;
-            }
-            else if (SelectedBook == "RM")
-            {
-                pageWidth = 600;
-                pageHeight = 1000;
-            }
-           */
 
-            //i = FileCount + 1;      //Fürs Testen der Crop funktion
+            progressBar1.Maximum = FileCount * 2;
+            progressBar1.Minimum = 1;
+            progressBar1.Visible = true;
+            progressBar1.Step = 1;
 
-            while (i < FileCount + 1)
+
+            while (i != FileCount)
             {
 
-                string filepath = "C:/Temp/fixed/fixed" + i + ".html";
+                string filepath = File.ReadAllText(@"C:/Temp/fixed/fixed" + i + ".html");
                 string exportpath = "C:/Temp/pdf/" + filename.ToString("0000") + ".pdf";
-                string cmd = "C:\ncd C:/Program Files/wkhtmltopdf/bin";
-                string cmd2 = "\nstart wkhtmltopdf.exe --page-width " + pageWidth + "mm --page-height " + pageHeight + "mm --margin-bottom 0 --margin-left 0 --margin-right 0 --margin-top 0 --disable-smart-shrinking --viewport-size 1920x1080 " + filepath + " " + exportpath;
-                File.WriteAllText(@"C:/Temp/bat/" + i + ".bat", cmd + cmd2);
-                Process.Start(@"C:/Temp/bat/" + i + ".bat");
+                NReco.PdfGenerator.HtmlToPdfConverter pdfConverter = new NReco.PdfGenerator.HtmlToPdfConverter();
+                pdfConverter.PageWidth = 5000;
+                pdfConverter.PageHeight = 5000;
+                pdfConverter.Margins = new NReco.PdfGenerator.PageMargins { Top = 0, Bottom = 0, Left = 0, Right = 0 };
+                pdfConverter.CustomWkHtmlArgs = "  --dpi 300 --disable-smart-shrinking";
+                byte[] pdfBuffer = pdfConverter.GeneratePdf(filepath);
+                File.WriteAllBytes(exportpath, pdfBuffer);
                 i++;
                 filename++;
+                progressBar1.PerformStep();
             }
-
-            /*
-             1mm = 2.8346456693point
-             1px = 0.75point          
-             */
 
 
             int PDFCount = Directory.GetFiles(@"C:/Temp/pdf/").Length;
 
 
-            while (PDFCount != FileCount)
-            {
-                System.Threading.Thread.Sleep(5000);
-                PDFCount = Directory.GetFiles(@"C:/Temp/pdf/").Length;
-            }
 
             //Beide XPoints sollten stimmen
             //XSize1 = width
@@ -103,7 +74,7 @@ namespace WindowsFormsApp1
                 XSize1 = 329;
                 XSize2 = 447;
             }
-            else if (SelectedBook == "RM")
+            else if(SelectedBook == "RM")
             {
                 XSize1 = 100;
                 XSize2 = 400;
@@ -153,6 +124,7 @@ namespace WindowsFormsApp1
                 document.Save(file);
                 x++;
                 FileName2++;
+                progressBar1.PerformStep();
             }
 
 
@@ -188,6 +160,14 @@ namespace WindowsFormsApp1
             System.Windows.Forms.Application.ExitThread();
         }
 
+        private void progressBar1_Click(object sender, EventArgs e)
+        {
+            int FileCount = Directory.GetFiles(@"C:/Temp/fixed/").Length;
+            progressBar1.Maximum = FileCount * 2;
+            progressBar1.Minimum = 1;
+            progressBar1.Visible = true;
+            progressBar1.Step = 1;
+        }
     }
 
 }
