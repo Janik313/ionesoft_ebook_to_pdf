@@ -30,5 +30,12 @@ namespace WindowsFormsApp1.Forms
             // Navigate to a URL.
             System.Diagnostics.Process.Start("https://janik313.github.io");
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Start fm = new Start();
+            fm.Show();
+            this.Hide();
+        }
     }
 }

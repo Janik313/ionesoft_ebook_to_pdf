@@ -29,6 +29,7 @@ namespace WindowsFormsApp1.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Custom));
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.px = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -167,8 +168,9 @@ namespace WindowsFormsApp1.Forms
             this.Controls.Add(this.label1);
             this.Controls.Add(this.px);
             this.Controls.Add(this.textBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Custom";
-            this.Text = "Form6";
+            this.Text = "Swissmem zu PDF konverter";
             this.ResumeLayout(false);
             this.PerformLayout();
 

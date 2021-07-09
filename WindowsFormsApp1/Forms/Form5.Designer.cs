@@ -50,7 +50,7 @@ namespace WindowsFormsApp1
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(256, 295);
+            this.button2.Location = new System.Drawing.Point(249, 310);
             this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(109, 27);
@@ -61,7 +61,7 @@ namespace WindowsFormsApp1
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(108, 265);
+            this.progressBar1.Location = new System.Drawing.Point(108, 270);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(400, 25);
             this.progressBar1.TabIndex = 2;
@@ -98,9 +98,10 @@ namespace WindowsFormsApp1
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form5";
-            this.Text = "Form5";
+            this.Text = "Swissmem zu PDF konverter";
             this.ResumeLayout(false);
             this.PerformLayout();
 
