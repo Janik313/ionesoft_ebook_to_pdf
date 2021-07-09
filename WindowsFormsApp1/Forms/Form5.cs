@@ -92,7 +92,7 @@ namespace WindowsFormsApp1
                 XSize2 = 631;
             }else if(SelectedBook == "CUSTOM")
             {
-                string[] lines = File.ReadAllLines(@"C:/Temp/custom/custom.txt");
+                string[] lines = File.ReadAllLines(@"C:/Temp/custom.txt");
 
 
                 int width = Int16.Parse(lines[3]);
@@ -154,7 +154,6 @@ namespace WindowsFormsApp1
         private void button2_Click(object sender, EventArgs e)
         {
             this.Hide();
-            System.IO.Directory.Delete("C:/Temp/bat", true);
             System.IO.Directory.Delete("C:/Temp/fixed", true);
             System.IO.Directory.Delete("C:/Temp/original", true);
             System.IO.Directory.Delete("C:/Temp/pdf", true);

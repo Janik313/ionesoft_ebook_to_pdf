@@ -117,4 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Dieser Schritt wandelt die Ebooks zu einem PDF um,
+das kann je nach Ebook und Computer eine längere
+Zeit in anspruch nehmen. Sobald der Vorgang abgeschlossen
+ist wird sich das PDF öffnen.
+
+Danach kannst du auf Programm beenden klicken, und das PDF 
+sollte in C:/Temp/ abgespeichert sein.</value>
+  </data>
 </root>

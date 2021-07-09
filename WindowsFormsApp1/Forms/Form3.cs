@@ -80,7 +80,7 @@ namespace WindowsFormsApp1
             }
             if (SelectedBook == "CUSTOM")
             {
-                string[] lines = File.ReadAllLines(@"C:/Temp/custom/custom.txt");
+                string[] lines = File.ReadAllLines(@"C:/Temp/custom.txt");
 
                 int Sites = Int16.Parse(lines[1]);
                 int Start = Int16.Parse(lines[2]);

@@ -53,7 +53,6 @@ namespace WindowsFormsApp1
                 System.IO.Directory.CreateDirectory("C:/Temp/pdf");
                 System.IO.Directory.CreateDirectory("C:/Temp/original");
                 System.IO.Directory.CreateDirectory("C:/Temp/fixed");
-                System.IO.Directory.CreateDirectory("C:/Temp/bat");
             }
 
             Form2 fm = new Form2();

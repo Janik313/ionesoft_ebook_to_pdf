@@ -23,7 +23,7 @@ namespace WindowsFormsApp1.Forms
         int StartPoint = 0;
         int width = 0;
         int height = 0;
-        string path = @"C:/Temp/custom/";
+        string path = @"C:/Temp/";
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
