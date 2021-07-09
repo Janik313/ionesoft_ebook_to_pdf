@@ -121,6 +121,9 @@ namespace WindowsFormsApp1
                     else if (content.Contains("VeriSign Commercial Software Publishers"))
                     {
                         urlnumb++;
+                    }else if (content.Contains(@"meta property=""dcterms: modified"">"))
+                    {
+                        urlnumb++;
                     }
                     else if (content.Contains(htmldefiner))
                     {
@@ -164,9 +167,7 @@ namespace WindowsFormsApp1
                 text = text.Replace("â€™", "’");
                 text = text.Replace("Î±", "α");
                 text = text.Replace("ï¬", "f");
-                text = text.Replace(@"width=""100%""", @"width=""1000%""");
-                text = text.Replace(@"align=""left""", @"align=""right""");
-                text = text.Replace(@"<img class=""_idGenObjectAttribute-1 _idGenObjectAttribute-2"" src=""http://localhost:7211/database/resource/pk/564"" data-original=""image/Kap1rechts.png"" alt="""" />", "");
+                text = text.Replace("î€€", ".");
 
 
                 //text = text.Replace("", "Ö");

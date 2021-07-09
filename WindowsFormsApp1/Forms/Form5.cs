@@ -32,10 +32,10 @@ namespace WindowsFormsApp1
             int filename = 001;
 
 
-            progressBar1.Maximum = FileCount * 2;
+            progressBar1.Maximum = (FileCount + (FileCount / 2)) * 2;
             progressBar1.Minimum = 1;
             progressBar1.Visible = true;
-            progressBar1.Step = 1;
+            progressBar1.Step = 2;
 
 
             while (i != FileCount)
@@ -76,8 +76,8 @@ namespace WindowsFormsApp1
             }
             else if(SelectedBook == "RM")
             {
-                XSize1 = 100;
-                XSize2 = 400;
+                XSize1 = 552;
+                XSize2 = 780;
             }else if(SelectedBook == "FM")
             {
                 XSize1 = 361;
@@ -109,6 +109,7 @@ namespace WindowsFormsApp1
                 }
             }
 
+            progressBar1.Step = 1;
 
 
             XPoint2 = XPoint2 - XSize2;
@@ -163,7 +164,7 @@ namespace WindowsFormsApp1
         private void progressBar1_Click(object sender, EventArgs e)
         {
             int FileCount = Directory.GetFiles(@"C:/Temp/fixed/").Length;
-            progressBar1.Maximum = FileCount * 2;
+            progressBar1.Maximum = (FileCount + (FileCount/2))*2;
             progressBar1.Minimum = 1;
             progressBar1.Visible = true;
             progressBar1.Step = 1;
