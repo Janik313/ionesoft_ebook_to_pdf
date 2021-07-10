@@ -1,6 +1,6 @@
 ## Release v1.0
-Der erste Release des Programms. /n
-Zum ausführen auf Herunterladen klicken, das Archiv entpacken und swissmem_to_pdf.exe ausführen.
+Der erste Release des Programms.
+<br>Zum ausführen auf Herunterladen klicken, das Archiv entpacken und swissmem_to_pdf.exe ausführen.
 
 Bekannte Bugs:
 
