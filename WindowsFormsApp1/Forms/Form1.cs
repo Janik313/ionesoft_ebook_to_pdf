@@ -64,24 +64,7 @@ namespace WindowsFormsApp1
             this.Hide();
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            System.IO.Directory.CreateDirectory("C:/Temp");
-
-           
-                WebClient webClient = new WebClient();
-                byte[] downloadedBytes = webClient.DownloadData("https://www.swissmem.ch/fileadmin/user_upload/Swissmem_Berufsbildung/eBOOK/downloads/setup/win64/Swissmem_win64_7.0.2.exe");
-                while (downloadedBytes.Length == 0)
-                {
-                    Thread.Sleep(2000);
-                    downloadedBytes = webClient.DownloadData("https://www.swissmem.ch/fileadmin/user_upload/Swissmem_Berufsbildung/eBOOK/downloads/setup/win64/Swissmem_win64_7.0.2.exe");
-                }
-                Stream file = File.Open(@"C:/Temp/swissmem.exe", FileMode.Create);
-                file.Write(downloadedBytes, 0, downloadedBytes.Length);
-                file.Close();
- 
-                Process.Start(@"C:/Temp/swissmem.exe");   
-        }
+        
     }
 
 }
