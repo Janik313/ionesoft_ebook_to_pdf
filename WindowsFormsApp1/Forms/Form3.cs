@@ -46,7 +46,7 @@ namespace WindowsFormsApp1
             }
             if (SelectedBook == "TD")
             {
-                int TD = 260;
+                int TD = 259;
                 int TD2 = 14830;
                 Book = TD;
                 urlnumb = TD2;
@@ -107,10 +107,19 @@ namespace WindowsFormsApp1
                     using var client = new WebClient();
                     client.Headers.Add("User-Agent", "C# console program");
                     client.Encoding = System.Text.Encoding.UTF8;
-
+                    
+                    if (SelectedBook == "TD")
+                    {
+                        if (urlnumb == 14853)
+                        {
+                            urlnumb++;
+                        }
+                    }
 
                     string url = "http://localhost:7211/database/resource/pk/" + urlnumb;
                     string content = client.DownloadString(url);
+
+                    
 
                     if (content.Contains("Adobe Systems Incorporated"))
                     {

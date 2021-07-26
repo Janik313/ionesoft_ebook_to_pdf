@@ -88,5 +88,10 @@ namespace WindowsFormsApp1.Forms
         {
             //width
         }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://janik313.github.io/swissmem_ebook_to_pdf/custom");
+        }
     }
 }

@@ -81,10 +81,10 @@ namespace WindowsFormsApp1.Forms
             this.label4.Location = new System.Drawing.Point(19, 421);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(299, 51);
+            this.label4.Size = new System.Drawing.Size(298, 51);
             this.label4.TabIndex = 3;
-            this.label4.Text = "Falls du irgend ein Problem / einen Vorschlag \r\nhast kannst du mir auf Discord ei" +
-    "ne Nachricht \r\nschreiben: Janik313#8994";
+            this.label4.Text = "Falls du irgend ein Problem / einen Vorschlag \r\nhast kannst du mir eine Email sch" +
+    "icken:\r\njanik.wyder@bfsl.ch\r\n";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label5
@@ -113,7 +113,7 @@ namespace WindowsFormsApp1.Forms
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(111, 484);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(100, 28);
             this.button1.TabIndex = 7;
@@ -124,9 +124,11 @@ namespace WindowsFormsApp1.Forms
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(23, 107);
+            this.pictureBox1.Location = new System.Drawing.Point(23, 108);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(295, 268);
+            this.pictureBox1.Size = new System.Drawing.Size(277, 266);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 8;
             this.pictureBox1.TabStop = false;
             // 
@@ -135,16 +137,16 @@ namespace WindowsFormsApp1.Forms
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(347, 527);
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.linkLabel1);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "About";
             this.Text = "Swissmem zu PDF konverter";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
