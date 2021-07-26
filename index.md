@@ -1,8 +1,6 @@
-## Release v1.0
-Der erste Release des Programms.
-<br>Zum ausführen auf Herunterladen klicken, das Archiv entpacken und swissmem_to_pdf.exe ausführen.
+## Release v1.2
+Alle Bücher werden nun richtig exportiert.
+Ausserdem werden die Sonderzeichen nun richtig dargestellt.
 
-Bekannte Bugs:
-
-- Sonderzeichen fehlen noch (Komische Zeichen)
-- Normen-Auzug 2018 error beim herunterladen
+Bugs:
+Der Normenauszug funktioniert überhaupt nicht und ist quasi unbrauchbar.
