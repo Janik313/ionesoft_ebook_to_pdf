@@ -37,5 +37,10 @@ namespace WindowsFormsApp1.Forms
             fm.Show();
             this.Hide();
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
