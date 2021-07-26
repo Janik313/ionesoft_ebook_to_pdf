@@ -55,7 +55,7 @@ namespace WindowsFormsApp1
             if (SelectedBook == "RM")
             {
 
-                int RM = 333;
+                int RM = 331;
                 int RM2 = 11264;
                 Book = RM;
                 urlnumb = RM2;
@@ -106,6 +106,8 @@ namespace WindowsFormsApp1
                 {
                     using var client = new WebClient();
                     client.Headers.Add("User-Agent", "C# console program");
+                    client.Encoding = System.Text.Encoding.UTF8;
+
 
                     string url = "http://localhost:7211/database/resource/pk/" + urlnumb;
                     string content = client.DownloadString(url);
@@ -122,6 +124,9 @@ namespace WindowsFormsApp1
                     {
                         urlnumb++;
                     }else if (content.Contains(@"meta property=""dcterms: modified"">"))
+                    {
+                        urlnumb++;
+                    }else if (content.Contains("http://purl.org/dc/elements/1.1/"))
                     {
                         urlnumb++;
                     }
@@ -168,6 +173,52 @@ namespace WindowsFormsApp1
                 text = text.Replace("Î±", "α");
                 text = text.Replace("ï¬", "f");
                 text = text.Replace("î€€", ".");
+                text = text.Replace("ïƒ°", "⇨");
+                text = text.Replace("ïƒ", "→");
+                text = text.Replace("α", "α");
+                text = text.Replace("Ã¸", "ø");
+                text = text.Replace("âˆ†", "∆");
+                text = text.Replace("Ã–", "Ö");
+                text = text.Replace("Ï‘", "ϑ");
+                text = text.Replace("â‡’", "⇒");
+                text = text.Replace("Ã„", "Ä");
+                text = text.Replace("â†’", "→");
+                text = text.Replace("ï¬‚", "fl");
+                text = text.Replace("Î¨", "Ψ");
+                text = text.Replace("ï£¨", "®");
+                text = text.Replace("Îµ", "ε");
+                text = text.Replace("Î»", "λ");
+                text = text.Replace("Î·", "η");
+                text = text.Replace("â‰ˆ", "≈");
+                text = text.Replace("â‘", "①");
+                text = text.Replace("â‘¡", "②");
+                text = text.Replace("â‘¢", "③");
+                text = text.Replace("â‘£", "④");
+                text = text.Replace("â‘¤", "⑤");
+                text = text.Replace("â‘¥", "⑥");
+                text = text.Replace("â‘¦", "⑦");
+                text = text.Replace("â‘§", "⑧");
+                text = text.Replace("â‘¨", "⑨");
+                text = text.Replace("â‘©", "⑩");
+                text = text.Replace("â‘ª", "⑪");
+                text = text.Replace("â‘«", "⑫");
+                text = text.Replace("â‰™", "≙");
+
+                text = text.Replace("Î„", "΄");
+                text = text.Replace("Ë", "˝");
+                text = text.Replace("âˆš", "√");
+                text = text.Replace("â‰¥", "≥");
+                text = text.Replace("â—¯", "◯");
+                text = text.Replace("â€", "”");
+                text = text.Replace("Î£", "Σ");
+                text = text.Replace("âŒ€", "ø");
+                text = text.Replace("Î”", "Δ");
+                text = text.Replace("â€˜s", "‘");
+                text = text.Replace("Ïƒ", "σ");
+                text = text.Replace("µË†", "µˆ");
+                text = text.Replace("ÏƒË†", "σˆ");
+                text = text.Replace("Ëœ", "˜");
+
 
 
                 //text = text.Replace("", "Ö");

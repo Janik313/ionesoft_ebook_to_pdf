@@ -64,7 +64,10 @@ namespace WindowsFormsApp1
             this.Hide();
         }
 
-        
+        private void label1_Click_1(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }

@@ -40,11 +40,17 @@ namespace WindowsFormsApp1
 
             while (i != FileCount)
             {
-
                 string filepath = File.ReadAllText(@"C:/Temp/fixed/fixed" + i + ".html");
                 string exportpath = "C:/Temp/pdf/" + filename.ToString("0000") + ".pdf";
                 NReco.PdfGenerator.HtmlToPdfConverter pdfConverter = new NReco.PdfGenerator.HtmlToPdfConverter();
-                pdfConverter.PageWidth = 5000;
+                if (SelectedBook == "RM")
+                {
+                    pdfConverter.PageWidth = 1000;
+                }
+                else
+                {
+                    pdfConverter.PageWidth = 5000;
+                }
                 pdfConverter.PageHeight = 5000;
                 pdfConverter.Margins = new NReco.PdfGenerator.PageMargins { Top = 0, Bottom = 0, Left = 0, Right = 0 };
                 pdfConverter.CustomWkHtmlArgs = "  --dpi 300 --disable-smart-shrinking";
@@ -71,7 +77,7 @@ namespace WindowsFormsApp1
 
             if (SelectedBook == "NA")
             {
-                XSize1 = 329;
+                XSize1 = 450;
                 XSize2 = 447;
             }
             else if(SelectedBook == "RM")
@@ -157,6 +163,11 @@ namespace WindowsFormsApp1
             System.IO.Directory.Delete("C:/Temp/fixed", true);
             System.IO.Directory.Delete("C:/Temp/original", true);
             System.IO.Directory.Delete("C:/Temp/pdf", true);
+            string SelectedBook = File.ReadAllText(@"C:/Temp/SelectedBook.txt");
+            if (SelectedBook == "CUSTOM")
+            {
+                MessageBox.Show("Du hast ein eigenes Buch konvertiert, daher wäre ich dir sehr dankbar wenn du mir den gesamten Inhalt des Ordners C:/Temp per email schicken könntest. Dann könnte ich dein Buch in das Programm einbauen. Meine Emailadress ist: janik.wyder@bfsl.ch", "Mithilfe", MessageBoxButtons.OK);
+            }
             System.Windows.Forms.Application.ExitThread();
         }
 
