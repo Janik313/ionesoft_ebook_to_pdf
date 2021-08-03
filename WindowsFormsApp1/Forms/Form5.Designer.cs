@@ -35,11 +35,12 @@ namespace WindowsFormsApp1
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(241, 232);
+            this.button1.Location = new System.Drawing.Point(241, 228);
             this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(124, 28);
@@ -50,7 +51,7 @@ namespace WindowsFormsApp1
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(249, 310);
+            this.button2.Location = new System.Drawing.Point(249, 301);
             this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(109, 27);
@@ -61,7 +62,7 @@ namespace WindowsFormsApp1
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(108, 270);
+            this.progressBar1.Location = new System.Drawing.Point(108, 265);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(400, 25);
             this.progressBar1.TabIndex = 2;
@@ -83,16 +84,28 @@ namespace WindowsFormsApp1
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(105, 83);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(417, 119);
+            this.label2.Size = new System.Drawing.Size(417, 136);
             this.label2.TabIndex = 6;
             this.label2.Text = resources.GetString("label2.Text");
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label2.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(242, 336);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(126, 35);
+            this.button3.TabIndex = 7;
+            this.button3.Text = "Neue Umwandlung \r\nstarten";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // Form5
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(600, 366);
+            this.ClientSize = new System.Drawing.Size(600, 381);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.progressBar1);
@@ -114,5 +127,6 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button button3;
     }
 }

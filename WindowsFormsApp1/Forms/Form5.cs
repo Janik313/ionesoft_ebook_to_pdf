@@ -179,6 +179,28 @@ namespace WindowsFormsApp1
             progressBar1.Visible = true;
             progressBar1.Step = 1;
         }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            System.IO.Directory.Delete("C:/Temp/fixed", true);
+            System.IO.Directory.Delete("C:/Temp/original", true);
+            System.IO.Directory.Delete("C:/Temp/pdf", true);
+            string SelectedBook = File.ReadAllText(@"C:/Temp/SelectedBook.txt");
+            if (SelectedBook == "CUSTOM")
+            {
+                MessageBox.Show("Du hast ein eigenes Buch konvertiert, daher wäre ich dir sehr dankbar wenn du mir den gesamten Inhalt des Ordners C:/Temp per email schicken könntest. Dann könnte ich dein Buch in das Programm einbauen. Meine Emailadress ist: janik.wyder@bfsl.ch", "Mithilfe", MessageBoxButtons.OK);
+            }
+
+
+            Form1 fm = new Form1();
+            fm.Show();
+            this.Hide();
+        }
     }
 
 }
