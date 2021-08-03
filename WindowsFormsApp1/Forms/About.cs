@@ -22,14 +22,6 @@ namespace WindowsFormsApp1.Forms
 
         }
 
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            // Specify that the link was visited.
-            this.linkLabel1.LinkVisited = true;
-
-            // Navigate to a URL.
-            System.Diagnostics.Process.Start("https://janik313.github.io");
-        }
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -41,6 +33,11 @@ namespace WindowsFormsApp1.Forms
         private void pictureBox1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void pictureBox1_Click_1(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://janik313.github.io");
         }
     }
 }
