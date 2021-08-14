@@ -1,3 +1,6 @@
+## Release 1.4
+Einige kleine Bugfixes.
+
 ## Release 1.3
 Einige Verbesserungen und Bugfixes.
 
