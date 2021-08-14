@@ -115,6 +115,7 @@ namespace WindowsFormsApp1
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form5";
             this.Text = "Swissmem zu PDF konverter";
+            this.Load += new System.EventHandler(this.Form5_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

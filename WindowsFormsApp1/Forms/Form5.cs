@@ -166,7 +166,7 @@ namespace WindowsFormsApp1
             string SelectedBook = File.ReadAllText(@"C:/Temp/SelectedBook.txt");
             if (SelectedBook == "CUSTOM")
             {
-                MessageBox.Show("Du hast ein eigenes Buch konvertiert, daher wäre ich dir sehr dankbar wenn du mir den gesamten Inhalt des Ordners C:/Temp per email schicken könntest. Dann könnte ich dein Buch in das Programm einbauen. Meine Emailadress ist: janik.wyder@bfsl.ch", "Mithilfe", MessageBoxButtons.OK);
+                MessageBox.Show("Du hast ein eigenes Buch konvertiert, daher wäre ich dir sehr dankbar wenn du mir den gesamten Inhalt des Ordners C:/Temp per email schicken könntest. Dann könnte ich dein Buch in das Programm einbauen. Meine Emailadresse ist: janik.wyder@bfsl.ch", "Mithilfe", MessageBoxButtons.OK);
             }
             System.Windows.Forms.Application.ExitThread();
         }
@@ -200,6 +200,11 @@ namespace WindowsFormsApp1
             Form1 fm = new Form1();
             fm.Show();
             this.Hide();
+        }
+
+        private void Form5_Load(object sender, EventArgs e)
+        {
+
         }
     }
 
