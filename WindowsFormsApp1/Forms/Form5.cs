@@ -169,24 +169,17 @@ namespace WindowsFormsApp1
 
 
                 var gitHubClient = new GitHubClient(new ProductHeaderValue("Swissmem_Data"));
-                gitHubClient.Credentials = new Credentials("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");
-                var sb = new StringBuilder("---");
-                sb.AppendLine();
-                sb.AppendLine($"date: " + CurrentTime);
-                sb.AppendLine($"title: \"Custom Daten\"");
-                sb.AppendLine("---");
-                sb.AppendLine();
-
-                sb.AppendLine("# Custom Daten");
-                sb.AppendLine();
-
+                gitHubClient.Credentials = new Credentials("");
+                var pdf = File.ReadAllBytes(@"C:/Swissmem/" + CurrentTime + ".zip");
+                
+                
                 var owner = "janik313";
                 var repoName = "swissmem_ebook_to_pdf";
-                var filepath = @"C:/Swissmem/" + CurrentTime + ".zip";
+                var filepath = @"Data/" + CurrentTime + ".pdf";
                 var branch = "data";
 
                 gitHubClient.Repository.Content.CreateFile(owner, repoName, filepath,
-     new CreateFileRequest($"First commit for {filepath}", sb.ToString(), branch));
+     new CreateFileRequest($".", File.ReadAllBytes(@"C:/Temp/CUSTOM.pdf").ToString(), branch));
 
             }
 
