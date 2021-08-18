@@ -13,6 +13,8 @@ using PdfSharp.Pdf;
 using PdfSharp.Pdf.IO;
 using PdfSharp.Drawing;
 using NReco;
+using System.IO.Compression;
+using Octokit;
 
 namespace WindowsFormsApp1
 {
@@ -152,22 +154,52 @@ namespace WindowsFormsApp1
                 }
                 targetDoc.Save(targetPath);
             }
+
+            if (SelectedBook == "CUSTOM")
+            {
+                string CurrentTime = DateTime.Now.ToString("yyyy-dd-M--HH-mm-ss");
+                System.IO.Directory.Delete("C:/Temp/fixed", true);
+                System.IO.Directory.Delete("C:/Temp/original", true);
+                System.IO.Directory.Delete("C:/Temp/pdf", true);
+                System.IO.Directory.CreateDirectory("C:/Swissmem");
+                System.Threading.Thread.Sleep(2000);
+                string startPath = @"C:/Temp/";
+                string zipPath = @"C:/Swissmem/" + CurrentTime + ".zip";
+                ZipFile.CreateFromDirectory(startPath, zipPath);
+
+
+                var gitHubClient = new GitHubClient(new ProductHeaderValue("Swissmem_Data"));
+                gitHubClient.Credentials = new Credentials("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");
+                var sb = new StringBuilder("---");
+                sb.AppendLine();
+                sb.AppendLine($"date: " + CurrentTime);
+                sb.AppendLine($"title: \"Custom Daten\"");
+                sb.AppendLine("---");
+                sb.AppendLine();
+
+                sb.AppendLine("# Custom Daten");
+                sb.AppendLine();
+
+                var owner = "janik313";
+                var repoName = "swissmem_ebook_to_pdf";
+                var filepath = @"C:/Swissmem/" + CurrentTime + ".zip";
+                var branch = "data";
+
+                gitHubClient.Repository.Content.CreateFile(owner, repoName, filepath,
+     new CreateFileRequest($"First commit for {filepath}", sb.ToString(), branch));
+
+            }
+
+
             Process.Start(@"C:/Temp/" + FileName + ".pdf");
             MessageBox.Show("Die Umwandlung ist abgeschlossen, du kannst nun fortfahren.", "Umwandlung Abgeschlossen", MessageBoxButtons.OK);
-            
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             this.Hide();
-            System.IO.Directory.Delete("C:/Temp/fixed", true);
-            System.IO.Directory.Delete("C:/Temp/original", true);
-            System.IO.Directory.Delete("C:/Temp/pdf", true);
-            string SelectedBook = File.ReadAllText(@"C:/Temp/SelectedBook.txt");
-            if (SelectedBook == "CUSTOM")
-            {
-                MessageBox.Show("Du hast ein eigenes Buch konvertiert, daher wäre ich dir sehr dankbar wenn du mir den gesamten Inhalt des Ordners C:/Temp per email schicken könntest. Dann könnte ich dein Buch in das Programm einbauen. Meine Emailadresse ist: janik.wyder@bfsl.ch", "Mithilfe", MessageBoxButtons.OK);
-            }
+            System.IO.Directory.Delete("C:/Temp/", true);
+            System.Threading.Thread.Sleep(20000);
             System.Windows.Forms.Application.ExitThread();
         }
 
@@ -187,16 +219,7 @@ namespace WindowsFormsApp1
 
         private void button3_Click(object sender, EventArgs e)
         {
-            System.IO.Directory.Delete("C:/Temp/fixed", true);
-            System.IO.Directory.Delete("C:/Temp/original", true);
-            System.IO.Directory.Delete("C:/Temp/pdf", true);
-            string SelectedBook = File.ReadAllText(@"C:/Temp/SelectedBook.txt");
-            if (SelectedBook == "CUSTOM")
-            {
-                MessageBox.Show("Du hast ein eigenes Buch konvertiert, daher wäre ich dir sehr dankbar wenn du mir den gesamten Inhalt des Ordners C:/Temp per email schicken könntest. Dann könnte ich dein Buch in das Programm einbauen. Meine Emailadress ist: janik.wyder@bfsl.ch", "Mithilfe", MessageBoxButtons.OK);
-            }
-
-
+            System.IO.Directory.Delete("C:/Temp/data.zip", true);
             Form1 fm = new Form1();
             fm.Show();
             this.Hide();
