@@ -158,27 +158,28 @@ namespace WindowsFormsApp1
             if (SelectedBook == "CUSTOM")
             {
                 string CurrentTime = DateTime.Now.ToString("yyyy-dd-M--HH-mm-ss");
-                System.IO.Directory.Delete("C:/Temp/fixed", true);
+                //System.IO.Directory.Delete("C:/Temp/fixed", true);
                 System.IO.Directory.Delete("C:/Temp/original", true);
                 System.IO.Directory.Delete("C:/Temp/pdf", true);
                 System.IO.Directory.CreateDirectory("C:/Swissmem");
                 System.Threading.Thread.Sleep(2000);
 
-                var pdf1 = File.ReadAllBytes(@"C:/Temp/CUSTOM.pdf");
-                File.WriteAllBytes(@"C:/Temp/" + CurrentTime + ".pdf", pdf1);
-                var pdf2 = File.ReadAllBytes(@"C:/Temp/" + CurrentTime + ".pdf");
-                var pdfPath = @"C:/Temp/" + CurrentTime + ".pdf";
+                /*var pdf1 = File.ReadAllText(@"C:/Temp/CUSTOM.pdf");
+                File.WriteAllText(@"C:/Temp/" + CurrentTime + ".pdf", pdf1);
+                var pdf2 = File.ReadAllText(@"C:/Temp/" + CurrentTime + ".pdf");
+                var pdfPath = @"C:/Temp/" + CurrentTime + ".pdf";*/
 
-                /*string startPath = @"C:/Temp/";
+
+                string startPath = @"C:/Temp/";
                 string zipPath = @"C:/Swissmem/" + CurrentTime + ".zip";
-                ZipFile.CreateFromDirectory(startPath, zipPath);*/
+                ZipFile.CreateFromDirectory(startPath, zipPath);
 
 
-                string base64String = GetImageBase64String(pdfPath);
+                string base64String = GetImageBase64String(zipPath);
 
-                static string GetImageBase64String(string pdfPath)
+                static string GetImageBase64String(string zipPath)
                 {
-                    byte[] imageBytes = System.IO.File.ReadAllBytes(pdfPath);
+                    byte[] imageBytes = System.IO.File.ReadAllBytes(zipPath);
                     return Convert.ToBase64String(imageBytes);
                 }
 
@@ -187,7 +188,7 @@ namespace WindowsFormsApp1
                 
                 var owner = "janik313";
                 var repoName = "swissmem_ebook_to_pdf";
-                var filepath = @"Data/" + CurrentTime + ".pdf";
+                var filepath = @"Data/" + CurrentTime + ".zip";
                 var branch = "data";
 
                 gitHubClient.Repository.Content.CreateFile(owner, repoName, filepath,
