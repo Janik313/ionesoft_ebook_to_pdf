@@ -24,7 +24,10 @@
     <header class="page-header" role="banner">
       <h1 class="project-name">{{ "Swissmem zu PDF konvertierer" }}</h1>
       <h2 class="project-tagline">{{ page.description | default: site.description | default: site.github.project_tagline }}</h2>
-      {% if site.github.is_project_page %}
+	<h2 class="project-tagline">{{ "Windows Defender erkennt dieses Programm fälschlicherweise als Virus, deshalb muss man vielleicht den Schutz kurzzeitig ausschalten." }}</h2>
+<a href="https://www.virustotal.com/gui/file/ac34df371e7ff9286275c7660e0a0daadf23f11717022f2b5415f2a91d6b02ec">Virustotal link (analyse des programms von mehreren Antiviren)</a>
+
+	    {% if site.github.is_project_page %}
         <a href="{{ site.github.repository_url }}" class="btn">View on GitHub</a>
       {% endif %}
       {% if site.show_downloads %}
