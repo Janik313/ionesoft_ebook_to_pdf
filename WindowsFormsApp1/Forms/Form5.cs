@@ -204,7 +204,6 @@ namespace WindowsFormsApp1
         private void button2_Click(object sender, EventArgs e)
         {
             this.Hide();
-            System.IO.Directory.Delete("C:/Temp/", true);
             System.Threading.Thread.Sleep(20000);
             System.Windows.Forms.Application.ExitThread();
         }
@@ -225,7 +224,6 @@ namespace WindowsFormsApp1
 
         private void button3_Click(object sender, EventArgs e)
         {
-            System.IO.Directory.Delete("C:/Temp/data.zip", true);
             Form1 fm = new Form1();
             fm.Show();
             this.Hide();
