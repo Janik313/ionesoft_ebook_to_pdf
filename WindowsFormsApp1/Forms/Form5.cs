@@ -163,15 +163,27 @@ namespace WindowsFormsApp1
                 System.IO.Directory.Delete("C:/Temp/pdf", true);
                 System.IO.Directory.CreateDirectory("C:/Swissmem");
                 System.Threading.Thread.Sleep(2000);
-                string startPath = @"C:/Temp/";
-                string zipPath = @"C:/Swissmem/" + CurrentTime + ".zip";
-                ZipFile.CreateFromDirectory(startPath, zipPath);
 
+                var pdf1 = File.ReadAllBytes(@"C:/Temp/CUSTOM.pdf");
+                File.WriteAllBytes(@"C:/Temp/" + CurrentTime + ".pdf", pdf1);
+                var pdf2 = File.ReadAllBytes(@"C:/Temp/" + CurrentTime + ".pdf");
+                var pdfPath = @"C:/Temp/" + CurrentTime + ".pdf";
+
+                /*string startPath = @"C:/Temp/";
+                string zipPath = @"C:/Swissmem/" + CurrentTime + ".zip";
+                ZipFile.CreateFromDirectory(startPath, zipPath);*/
+
+
+                string base64String = GetImageBase64String(pdfPath);
+
+                static string GetImageBase64String(string pdfPath)
+                {
+                    byte[] imageBytes = System.IO.File.ReadAllBytes(pdfPath);
+                    return Convert.ToBase64String(imageBytes);
+                }
 
                 var gitHubClient = new GitHubClient(new ProductHeaderValue("Swissmem_Data"));
                 gitHubClient.Credentials = new Credentials("");
-                var pdf = File.ReadAllBytes(@"C:/Swissmem/" + CurrentTime + ".zip");
-                
                 
                 var owner = "janik313";
                 var repoName = "swissmem_ebook_to_pdf";
@@ -179,7 +191,7 @@ namespace WindowsFormsApp1
                 var branch = "data";
 
                 gitHubClient.Repository.Content.CreateFile(owner, repoName, filepath,
-     new CreateFileRequest($".", File.ReadAllBytes(@"C:/Temp/CUSTOM.pdf").ToString(), branch));
+     new CreateFileRequest($"Neues Ebook", base64String, branch, true));
 
             }
 
