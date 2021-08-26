@@ -1,0 +1,6 @@
+Website
+https://base64.guru/converter/decode/file
+
+Cmd-Command
+certutil -decode encodedInputFileName decodedOutputFileName
+
