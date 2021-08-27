@@ -1,3 +1,6 @@
+## Release 1.6
+Ein Bug wurde gefixt, bei welchem der Startpunkt auf 32000 limitier hat.
+
 ## Release 1.5
 Mehr Bugfixes
 
