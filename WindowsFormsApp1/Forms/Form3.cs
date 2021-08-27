@@ -82,8 +82,8 @@ namespace WindowsFormsApp1
             {
                 string[] lines = File.ReadAllLines(@"C:/Temp/custom.txt");
 
-                int Sites = Int16.Parse(lines[1]);
-                int Start = Int16.Parse(lines[2]);
+                int Sites = Int32.Parse(lines[1]);
+                int Start = Int32.Parse(lines[2]);
 
                 Book = Sites;
                 urlnumb = Start;

@@ -33,10 +33,10 @@ namespace WindowsFormsApp1.Forms
         private void button3_Click(object sender, EventArgs e)
         {
             //start
-            SiteCount = Int16.Parse(textBox1.Text);
-            StartPoint = Int16.Parse(textBox2.Text);
-            width = Int16.Parse(textBox4.Text);
-            height = Int16.Parse(textBox3.Text);
+            SiteCount = Int32.Parse(textBox1.Text);
+            StartPoint = Int32.Parse(textBox2.Text);
+            width = Int32.Parse(textBox4.Text);
+            height = Int32.Parse(textBox3.Text);
 
             string[] lines =
         {
@@ -52,10 +52,10 @@ namespace WindowsFormsApp1.Forms
         private void button4_Click(object sender, EventArgs e)
         {
             //test
-            SiteCount = Int16.Parse(textBox1.Text);
-            StartPoint = Int16.Parse(textBox2.Text);
-            width = Int16.Parse(textBox4.Text);
-            height = Int16.Parse(textBox3.Text);
+            SiteCount = Int32.Parse(textBox1.Text);
+            StartPoint = Int32.Parse(textBox2.Text);
+            width = Int32.Parse(textBox4.Text);
+            height = Int32.Parse(textBox3.Text);
 
             string[] lines =
         {

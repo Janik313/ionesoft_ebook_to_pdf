@@ -103,8 +103,8 @@ namespace WindowsFormsApp1
                 string[] lines = File.ReadAllLines(@"C:/Temp/custom.txt");
 
 
-                int width = Int16.Parse(lines[3]);
-                int height = Int16.Parse(lines[4]);
+                int width = Int32.Parse(lines[3]);
+                int height = Int32.Parse(lines[4]);
                 if (lines[0] == "mm")
                 {
                     XSize1 = Convert.ToInt32(width * 2.8346456693);
