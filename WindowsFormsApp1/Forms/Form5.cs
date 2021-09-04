@@ -157,42 +157,48 @@ namespace WindowsFormsApp1
 
             if (SelectedBook == "CUSTOM")
             {
-                string CurrentTime = DateTime.Now.ToString("yyyy-dd-M--HH-mm-ss");
-                //System.IO.Directory.Delete("C:/Temp/fixed", true);
-                System.IO.Directory.Delete("C:/Temp/original", true);
-                System.IO.Directory.Delete("C:/Temp/pdf", true);
-                System.IO.Directory.CreateDirectory("C:/Swissmem");
-                System.Threading.Thread.Sleep(2000);
-
-                /*var pdf1 = File.ReadAllText(@"C:/Temp/CUSTOM.pdf");
-                File.WriteAllText(@"C:/Temp/" + CurrentTime + ".pdf", pdf1);
-                var pdf2 = File.ReadAllText(@"C:/Temp/" + CurrentTime + ".pdf");
-                var pdfPath = @"C:/Temp/" + CurrentTime + ".pdf";*/
-
-
-                string startPath = @"C:/Temp/";
-                string zipPath = @"C:/Swissmem/" + CurrentTime + ".zip";
-                ZipFile.CreateFromDirectory(startPath, zipPath);
-
-
-                string base64String = GetImageBase64String(zipPath);
-
-                static string GetImageBase64String(string zipPath)
+                try
                 {
-                    byte[] imageBytes = System.IO.File.ReadAllBytes(zipPath);
-                    return Convert.ToBase64String(imageBytes);
+                    string CurrentTime = DateTime.Now.ToString("yyyy-dd-M--HH-mm-ss");
+                    //System.IO.Directory.Delete("C:/Temp/fixed", true);
+                    System.IO.Directory.Delete("C:/Temp/original", true);
+                    System.IO.Directory.Delete("C:/Temp/pdf", true);
+                    System.IO.Directory.Delete("C:/Temp/fixed", true);
+                    System.IO.Directory.CreateDirectory("C:/Swissmem");
+                    System.Threading.Thread.Sleep(2000);
+
+                    /*var pdf1 = File.ReadAllText(@"C:/Temp/CUSTOM.pdf");
+                    File.WriteAllText(@"C:/Temp/" + CurrentTime + ".pdf", pdf1);
+                    var pdf2 = File.ReadAllText(@"C:/Temp/" + CurrentTime + ".pdf");
+                    var pdfPath = @"C:/Temp/" + CurrentTime + ".pdf";*/
+
+
+                    string startPath = @"C:/Temp/";
+                    string zipPath = @"C:/Swissmem/" + CurrentTime + ".zip";
+                    ZipFile.CreateFromDirectory(startPath, zipPath);
+
+
+                    string base64String = GetImageBase64String(zipPath);
+
+                    static string GetImageBase64String(string zipPath)
+                    {
+                        byte[] imageBytes = System.IO.File.ReadAllBytes(zipPath);
+                        return Convert.ToBase64String(imageBytes);
+                    }
+
+                    var gitHubClient = new GitHubClient(new ProductHeaderValue("Swissmem_Data"));
+                    gitHubClient.Credentials = new Credentials("");
+
+                    var owner = "janik313";
+                    var repoName = "swissmem_ebook_to_pdf";
+                    var filepath = @"Data/" + CurrentTime + ".zip";
+                    var branch = "data";
+
+                    gitHubClient.Repository.Content.CreateFile(owner, repoName, filepath,
+         new CreateFileRequest($"Neues Ebook", base64String, branch, true));
                 }
-
-                var gitHubClient = new GitHubClient(new ProductHeaderValue("Swissmem_Data"));
-                gitHubClient.Credentials = new Credentials("");
+                catch { }
                 
-                var owner = "janik313";
-                var repoName = "swissmem_ebook_to_pdf";
-                var filepath = @"Data/" + CurrentTime + ".zip";
-                var branch = "data";
-
-                gitHubClient.Repository.Content.CreateFile(owner, repoName, filepath,
-     new CreateFileRequest($"Neues Ebook", base64String, branch, true));
 
             }
 

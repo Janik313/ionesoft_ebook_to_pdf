@@ -139,6 +139,10 @@ namespace WindowsFormsApp1
                     {
                         urlnumb++;
                     }
+                    else if (content.Contains("nowrap; width:25.743126em; color: #000000"))
+                    {
+                        urlnumb++;
+                    }
                     else if (content.Contains(htmldefiner))
                     {
                         string savedirectory = @"C:/Temp/original/" + i + ".html";
