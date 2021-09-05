@@ -139,6 +139,14 @@ namespace WindowsFormsApp1
                     {
                         urlnumb++;
                     }
+                    else if (content.Contains("{line-height: 1.45; margin:0px; padding:0px; white-space: nowrap; width:22.92925em;"))
+                    {
+                        urlnumb++;
+                    }
+                    else if (content.Contains("-webkit-user-select:none"))
+                    {
+                        urlnumb++;
+                    }
                     else if (content.Contains("nowrap; width:25.743126em; color: #000000"))
                     {
                         urlnumb++;
