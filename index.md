@@ -1,6 +1,6 @@
 ## Release 1.7
 Das Programm funktioniert nun wieder.
-Ausserdem wurde im Hintergrund einiges verbessert, damit alles etwas einfacher zum updaten ist.
+<br>Ausserdem wurde im Hintergrund einiges verbessert, damit alles etwas einfacher zum updaten ist.
 
 ## Release 1.6
 Ein Bug wurde gefixt, bei welchem der Startpunkt auf 32000 limitier hat.
