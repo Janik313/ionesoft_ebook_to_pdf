@@ -96,7 +96,8 @@ namespace WindowsFormsApp1
             progressBar1.Visible = true;
             progressBar1.Step = 1;
 
-
+            
+            
 
             int i = 0;
             string htmldefiner = "html";
@@ -120,48 +121,30 @@ namespace WindowsFormsApp1
                     string content = client.DownloadString(url);
 
                     
+                    string[] blocks = File.ReadAllLines(@"C:/Temp/blocked.txt");
+                    
 
-                    if (content.Contains("Adobe Systems Incorporated"))
+
+                    foreach (string forbidden in blocks)
                     {
-                        urlnumb++;
-                    }
-                    else if (content.Contains("http://www.monotype.com/html"))
-                    {
-                        urlnumb++;
-                    }
-                    else if (content.Contains("VeriSign Commercial Software Publishers"))
-                    {
-                        urlnumb++;
-                    }else if (content.Contains(@"meta property=""dcterms: modified"">"))
-                    {
-                        urlnumb++;
-                    }else if (content.Contains("http://purl.org/dc/elements/1.1/"))
-                    {
-                        urlnumb++;
-                    }
-                    else if (content.Contains("{line-height: 1.45; margin:0px; padding:0px; white-space: nowrap; width:22.92925em;"))
-                    {
-                        urlnumb++;
-                    }
-                    else if (content.Contains("-webkit-user-select:none"))
-                    {
-                        urlnumb++;
-                    }
-                    else if (content.Contains("nowrap; width:25.743126em; color: #000000"))
-                    {
-                        urlnumb++;
-                    }
-                    else if (content.Contains(htmldefiner))
-                    {
-                        string savedirectory = @"C:/Temp/original/" + i + ".html";
-                        System.IO.File.WriteAllText(savedirectory, content);
-                        i++;
-                        urlnumb++;
-                        progressBar1.PerformStep();
-                    }
-                    else
-                    {
-                        urlnumb++;
+                        if (content.Contains(forbidden))
+                        {
+                            urlnumb++;
+                            break;
+                        }else if (content.Contains(htmldefiner))
+                        {
+                            string savedirectory = @"C:/Temp/original/" + i + ".html";
+                            System.IO.File.WriteAllText(savedirectory, content);
+                            i++;
+                            urlnumb++;
+                            progressBar1.PerformStep();
+                            break;
+                        }
+                        else
+                        {
+                            urlnumb++;
+                            break;
+                        }
                     }
                 }
             }
@@ -173,77 +156,16 @@ namespace WindowsFormsApp1
             int FileCount = Directory.GetFiles(@"C:/Temp/original/").Length;
             i = 0;
 
+            string[] fix = File.ReadAllLines(@"C:/Temp/fix.txt");
+
             while (i < FileCount)
             {
                 string text = File.ReadAllText(@"C:/Temp/original/" + i + ".html");
-                text = text.Replace("localhost/", "localhost:7211/");
-                text = text.Replace("Ã¼", "ü");
-                text = text.Replace("Ã¤", "ä");
-                text = text.Replace("Ã¶", "ö");
-                text = text.Replace("Ãœ", "Ü");
-                text = text.Replace("ÃŸ", "ß");
-                text = text.Replace("â€¢", "•");
-                text = text.Replace("â€¦", "...");
-                text = text.Replace("â€ž", "„");
-                text = text.Replace("â€œ", "“");
-                text = text.Replace("Â", "");
-                text = text.Replace("â€“", "-");
-                text = text.Replace("Ã—", "×");
-                text = text.Replace("Ã©", "é");
-                text = text.Replace("â€™", "’");
-                text = text.Replace("Î±", "α");
-                text = text.Replace("ï¬", "f");
-                text = text.Replace("î€€", ".");
-                text = text.Replace("ïƒ°", "⇨");
-                text = text.Replace("ïƒ", "→");
-                text = text.Replace("α", "α");
-                text = text.Replace("Ã¸", "ø");
-                text = text.Replace("âˆ†", "∆");
-                text = text.Replace("Ã–", "Ö");
-                text = text.Replace("Ï‘", "ϑ");
-                text = text.Replace("â‡’", "⇒");
-                text = text.Replace("Ã„", "Ä");
-                text = text.Replace("â†’", "→");
-                text = text.Replace("ï¬‚", "fl");
-                text = text.Replace("Î¨", "Ψ");
-                text = text.Replace("ï£¨", "®");
-                text = text.Replace("Îµ", "ε");
-                text = text.Replace("Î»", "λ");
-                text = text.Replace("Î·", "η");
-                text = text.Replace("â‰ˆ", "≈");
-                text = text.Replace("â‘", "①");
-                text = text.Replace("â‘¡", "②");
-                text = text.Replace("â‘¢", "③");
-                text = text.Replace("â‘£", "④");
-                text = text.Replace("â‘¤", "⑤");
-                text = text.Replace("â‘¥", "⑥");
-                text = text.Replace("â‘¦", "⑦");
-                text = text.Replace("â‘§", "⑧");
-                text = text.Replace("â‘¨", "⑨");
-                text = text.Replace("â‘©", "⑩");
-                text = text.Replace("â‘ª", "⑪");
-                text = text.Replace("â‘«", "⑫");
-                text = text.Replace("â‰™", "≙");
-
-                text = text.Replace("Î„", "΄");
-                text = text.Replace("Ë", "˝");
-                text = text.Replace("âˆš", "√");
-                text = text.Replace("â‰¥", "≥");
-                text = text.Replace("â—¯", "◯");
-                text = text.Replace("â€", "”");
-                text = text.Replace("Î£", "Σ");
-                text = text.Replace("âŒ€", "ø");
-                text = text.Replace("Î”", "Δ");
-                text = text.Replace("â€˜s", "‘");
-                text = text.Replace("Ïƒ", "σ");
-                text = text.Replace("µË†", "µˆ");
-                text = text.Replace("ÏƒË†", "σˆ");
-                text = text.Replace("Ëœ", "˜");
-
-
-
-                //text = text.Replace("", "Ö");
-                //text = text.Replace("", "Ä");
+                foreach (string forbidden in fix)
+                {
+                    string[] words = forbidden.Split(' ');
+                    text = text.Replace(words[0], words[1]);
+                }
                 File.WriteAllText("C:/Temp/fixed/fixed" + i + ".html", text);
                 i++;
                 progressBar1.PerformStep();

@@ -23,16 +23,27 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-           
-                try
-                {
-                    System.Diagnostics.Process.Start("D:/Apps/Swissmem/Swissmem.exe");
-                }
-                catch (Exception)
-                {
-                    System.Diagnostics.Process.Start("C:/Apps/Swissmem/Swissmem.exe");
-                }
-            
+            Process[] ps = Process.GetProcessesByName("Swissmem");
+
+            foreach (Process p in ps)
+                p.Kill();
+
+            string StartPath = Application.StartupPath;
+
+            String Path = StartPath + "/Swissmem/Swissmem.exe";
+
+            Process.Start(Path);
+
+            {
+                System.IO.Directory.CreateDirectory("C:/Temp/pdf");
+                System.IO.Directory.CreateDirectory("C:/Temp/original");
+                System.IO.Directory.CreateDirectory("C:/Temp/fixed");
+            }
+
+            Form2 fm = new Form2();
+            fm.Show();
+            this.Hide();
+
         }
 
         private void button1_MouseClick(object sender, MouseEventArgs e)
@@ -52,16 +63,7 @@ namespace WindowsFormsApp1
 
         private void button2_Click(object sender, EventArgs e)
         {
-            {
-                System.IO.Directory.CreateDirectory("C:/Temp");
-                System.IO.Directory.CreateDirectory("C:/Temp/pdf");
-                System.IO.Directory.CreateDirectory("C:/Temp/original");
-                System.IO.Directory.CreateDirectory("C:/Temp/fixed");
-            }
-
-            Form2 fm = new Form2();
-            fm.Show();
-            this.Hide();
+            
         }
 
         private void label1_Click_1(object sender, EventArgs e)

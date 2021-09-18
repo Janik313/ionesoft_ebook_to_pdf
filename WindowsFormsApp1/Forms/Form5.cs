@@ -163,7 +163,6 @@ namespace WindowsFormsApp1
                     //System.IO.Directory.Delete("C:/Temp/fixed", true);
                     System.IO.Directory.Delete("C:/Temp/original", true);
                     System.IO.Directory.Delete("C:/Temp/pdf", true);
-                    System.IO.Directory.Delete("C:/Temp/fixed", true);
                     System.IO.Directory.CreateDirectory("C:/Swissmem");
                     System.Threading.Thread.Sleep(2000);
 
@@ -187,7 +186,7 @@ namespace WindowsFormsApp1
                     }
 
                     var gitHubClient = new GitHubClient(new ProductHeaderValue("Swissmem_Data"));
-                    gitHubClient.Credentials = new Credentials("");
+                    gitHubClient.Credentials = new Credentials("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");
 
                     var owner = "janik313";
                     var repoName = "swissmem_ebook_to_pdf";
@@ -204,6 +203,8 @@ namespace WindowsFormsApp1
 
 
             Process.Start(@"C:/Temp/" + FileName + ".pdf");
+
+            System.IO.Directory.Delete("C:/Temp/fixed", true);
             MessageBox.Show("Die Umwandlung ist abgeschlossen, du kannst nun fortfahren.", "Umwandlung Abgeschlossen", MessageBoxButtons.OK);
         }
 
@@ -230,7 +231,7 @@ namespace WindowsFormsApp1
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Form1 fm = new Form1();
+            Form2 fm = new Form2();
             fm.Show();
             this.Hide();
         }

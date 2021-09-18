@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Net;
 
 namespace WindowsFormsApp1.Forms
 {
@@ -28,6 +29,10 @@ namespace WindowsFormsApp1.Forms
             Form1 fm = new Form1();
             fm.Show();
             this.Hide();
+            System.IO.Directory.CreateDirectory("C:/Temp");
+            WebClient wc = new WebClient();
+            wc.DownloadFile("https://janik313.github.io/SwissmemBlocked.txt", @"C:/Temp/blocked.txt");
+            wc.DownloadFile("https://janik313.github.io/SwissmemFix.txt", @"C:/Temp/fix.txt");
         }
 
 
