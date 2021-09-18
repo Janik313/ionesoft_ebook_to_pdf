@@ -186,7 +186,7 @@ namespace WindowsFormsApp1
                     }
 
                     var gitHubClient = new GitHubClient(new ProductHeaderValue("Swissmem_Data"));
-                    gitHubClient.Credentials = new Credentials("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");
+                    gitHubClient.Credentials = new Credentials("");
 
                     var owner = "janik313";
                     var repoName = "swissmem_ebook_to_pdf";
