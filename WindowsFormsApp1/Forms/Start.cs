@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net;
+using System.IO;
 
 namespace WindowsFormsApp1.Forms
 {
@@ -33,6 +34,19 @@ namespace WindowsFormsApp1.Forms
             WebClient wc = new WebClient();
             wc.DownloadFile("https://janik313.github.io/SwissmemBlocked.txt", @"C:/Temp/blocked.txt");
             wc.DownloadFile("https://janik313.github.io/SwissmemFix.txt", @"C:/Temp/fix.txt");
+
+            string AppDataFolder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            string FolderToDelete = Path.Combine(AppDataFolder, "Ionesoft/Swissmem");
+
+
+            try
+            {
+                Directory.Delete(FolderToDelete, true); //Setting "recursive" to true will remove every subfile/-folder.
+            }
+            catch
+            {
+                
+            }
         }
 
 
