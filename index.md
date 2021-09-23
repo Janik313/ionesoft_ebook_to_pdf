@@ -1,3 +1,6 @@
+## Release 1.8
+Ein kleiner Bugfix, aber das Programm funktioniert nun endlich wieder.
+
 ## Release 1.7
 Das Programm funktioniert nun wieder.
 <br>Ausserdem wurde im Hintergrund einiges verbessert, damit alles etwas einfacher zum updaten ist.
