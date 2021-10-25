@@ -1,3 +1,6 @@
+## Release 1.9
+Die App zerstört nun nicht mehr den Swissmem-Ordner.
+
 ## Release 1.8
 Ein kleiner Bugfix, aber das Programm funktioniert nun endlich wieder.
 
