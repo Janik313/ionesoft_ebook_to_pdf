@@ -46,9 +46,9 @@ namespace WindowsFormsApp1.Forms
             foreach (Process p in ps)
                 p.Kill();
 
-            System.IO.File.Delete(@"C:/Temp/Backup.zip");
+            System.IO.File.Delete(@"C:/Swissmem/Backup.zip");
             System.Threading.Thread.Sleep(1000);
-            System.IO.Compression.ZipFile.CreateFromDirectory(FolderToDelete, @"C:/Temp/Backup.zip");
+            System.IO.Compression.ZipFile.CreateFromDirectory(FolderToDelete, @"C:/Swissmem/Backup.zip");
             Directory.Delete(FolderToDelete, true); //Setting "recursive" to true will remove every subfile/-folder.
                                                     //ZipFile.ExtractToDirectory(@"C:/Temp/Backup.zip", FolderToDelete);
 
