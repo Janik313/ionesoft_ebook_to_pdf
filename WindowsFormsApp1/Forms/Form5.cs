@@ -16,6 +16,7 @@ using NReco;
 using System.IO.Compression;
 using Octokit;
 
+
 namespace WindowsFormsApp1
 {
     public partial class Form5 : System.Windows.Forms.Form
@@ -210,6 +211,19 @@ namespace WindowsFormsApp1
 
         private void button2_Click(object sender, EventArgs e)
         {
+            Process[] ps = Process.GetProcessesByName("Swissmem");
+
+            foreach (Process p in ps)
+                p.Kill();
+            System.Threading.Thread.Sleep(1000);
+            string AppDataFolder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            string FolderToDelete = Path.Combine(AppDataFolder, "Ionesoft/Swissmem");
+
+            Directory.Delete(FolderToDelete, true); //Setting "recursive" to true will remove every subfile/-folder.
+            ZipFile.ExtractToDirectory(@"C:/Temp/Backup.zip", FolderToDelete);
+
+            System.Threading.Thread.Sleep(500);
+
             this.Hide();
             System.Threading.Thread.Sleep(20000);
             System.Windows.Forms.Application.ExitThread();

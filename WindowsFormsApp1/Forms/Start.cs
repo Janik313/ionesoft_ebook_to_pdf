@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net;
 using System.IO;
+using System.IO.Compression;
+using System.Diagnostics;
+
 
 namespace WindowsFormsApp1.Forms
 {
@@ -38,15 +41,17 @@ namespace WindowsFormsApp1.Forms
             string AppDataFolder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             string FolderToDelete = Path.Combine(AppDataFolder, "Ionesoft/Swissmem");
 
+            Process[] ps = Process.GetProcessesByName("Swissmem");
 
-            try
-            {
-                Directory.Delete(FolderToDelete, true); //Setting "recursive" to true will remove every subfile/-folder.
-            }
-            catch
-            {
-                
-            }
+            foreach (Process p in ps)
+                p.Kill();
+
+            System.IO.File.Delete(@"C:/Temp/Backup.zip");
+            System.Threading.Thread.Sleep(1000);
+            System.IO.Compression.ZipFile.CreateFromDirectory(FolderToDelete, @"C:/Temp/Backup.zip");
+            Directory.Delete(FolderToDelete, true); //Setting "recursive" to true will remove every subfile/-folder.
+                                                    //ZipFile.ExtractToDirectory(@"C:/Temp/Backup.zip", FolderToDelete);
+
         }
 
 
