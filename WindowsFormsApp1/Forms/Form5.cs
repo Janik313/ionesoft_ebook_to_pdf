@@ -162,6 +162,7 @@ namespace WindowsFormsApp1
                 //System.IO.Directory.Delete("C:/Temp/fixed", true);
                 System.IO.Directory.Delete("C:/Temp/original", true);
                 System.IO.Directory.Delete("C:/Temp/pdf", true);
+                System.IO.Directory.Delete("C:/Temp/fixed", true);
                 System.IO.Directory.CreateDirectory("C:/Swissmem");
                 System.Threading.Thread.Sleep(2000);
 
@@ -217,7 +218,12 @@ namespace WindowsFormsApp1
             string FolderToDelete = Path.Combine(AppDataFolder, "Ionesoft/Swissmem");
 
             Directory.Delete(FolderToDelete, true); //Setting "recursive" to true will remove every subfile/-folder.
-            ZipFile.ExtractToDirectory(@"C:/Swissmem/Backup.zip", FolderToDelete);
+            try
+            {
+                ZipFile.ExtractToDirectory(@"C:/Swissmem/Backup.zip", FolderToDelete);
+            }
+            catch { }
+            
 
             System.Threading.Thread.Sleep(500);
 
